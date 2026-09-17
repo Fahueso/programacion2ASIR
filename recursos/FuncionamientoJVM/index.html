@@ -1,0 +1,1536 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://fahueso.github.io/programacion2bASIR/recursos/FuncionamientoJVM/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/camp.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>La Máquina Virtual de Java (JVM) y el Ecosistema Java - Programación II ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#la-maquina-virtual-de-java-jvm-y-el-ecosistema-java" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Programación II ASIR" class="md-header__button md-logo" aria-label="Programación II ASIR" data-md-component="logo">
+      
+  <img src="../../assets/images/camp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programación II ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              La Máquina Virtual de Java (JVM) y el Ecosistema Java
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Fahueso/programacion2ASIR" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Fahueso/programacion2ASIR
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../unidades/ud01/" class="md-tabs__link">
+          
+  
+  
+  Unidades
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Programación II ASIR" class="md-nav__button md-logo" aria-label="Programación II ASIR" data-md-component="logo">
+      
+  <img src="../../assets/images/camp.png" alt="logo">
+
+    </a>
+    Programación II ASIR
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Fahueso/programacion2ASIR" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Fahueso/programacion2ASIR
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidades
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unidades
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidades/ud01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD1 - Introducción a la programación. Lenguaje Java
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-conceptos-fundamentales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Conceptos Fundamentales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-arquitectura-interna-de-la-jvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Arquitectura Interna de la JVM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Arquitectura Interna de la JVM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-el-class-loader-cargador-de-clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. El Class Loader (Cargador de Clases)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-el-motor-de-ejecucion-execution-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. El Motor de Ejecución (Execution Engine)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-distribucion-de-la-memoria-runtime-data-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Distribución de la Memoria (Runtime Data Areas)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-gestion-de-memoria-y-tuning-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Gestión de Memoria y Tuning (Flags)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Gestión de Memoria y Tuning (Flags)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-realmente-una-pila-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es realmente una Pila (Stack)?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Qué es realmente una Pila (Stack)?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-la-analogia-de-los-platos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. La Analogía de los Platos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-como-aplica-esto-a-la-jvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. ¿Cómo aplica esto a la JVM?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-el-ciclo-de-vida-de-la-pila-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. El ciclo de vida de la Pila (Paso a paso)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-por-que-el-stack-es-tan-rapido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. ¿Por qué el Stack es tan rápido?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-practico-provocando-un-outofmemoryerror" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo Práctico: Provocando un OutOfMemoryError
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejemplo Práctico: Provocando un OutOfMemoryError">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-codigo-provocaroomjava" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Código (ProvocarOOM.java)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-ejecutarlo-para-que-falle-rapido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo ejecutarlo para que falle rápido
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-esta-pasando-exactamente-en-la-jvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué está pasando exactamente en la JVM?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-practico-provocando-un-stackoverflowerror" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo Práctico: Provocando un StackOverflowError
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejemplo Práctico: Provocando un StackOverflowError">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-codigo-provocarstackoverflowjava" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El Código (ProvocarStackOverflow.java)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-ejecutarlo-para-que-falle-rapido_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo ejecutarlo para que falle rápido
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-esta-pasando-exactamente-en-la-jvm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué está pasando exactamente en la JVM?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-el-garbage-collector-gc-y-la-estrategia-generacional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. El Garbage Collector (GC) y la Estrategia Generacional
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. El Garbage Collector (GC) y la Estrategia Generacional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recoleccion-parcial-minor-gc-young-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recolección Parcial: Minor GC (Young Generation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recoleccion-total-major-gc-full-gc-old-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recolección Total: Major GC / Full GC (Old Generation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitorizacion-del-garbage-collector-gc-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitorización del Garbage Collector (GC Logging)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitorización del Garbage Collector (GC Logging)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-en-java-9-y-versiones-superiores-java-11-17-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. En Java 9 y versiones superiores (Java 11, 17, 21...)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-en-java-8-versiones-antiguas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. En Java 8 (Versiones antiguas)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. En Java 8 (Versiones antiguas)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-ejecutarlo-con-el-ejemplo-de-outofmemory-anterior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo ejecutarlo con el ejemplo de OutOfMemory anterior
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-leer-el-log-del-gc-ejemplo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Cómo leer el log del GC? (Ejemplo real)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ecosistema-jdk-jre-y-jvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Ecosistema: JDK, JRE y JVM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-proveedores-y-distribuciones-de-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Proveedores y Distribuciones de Java
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-versiones-de-java-y-lts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Versiones de Java y LTS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-guia-practica-de-consola-y-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Guía Práctica de Consola y Linux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Guía Práctica de Consola y Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compilar-y-ejecutar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compilar y Ejecutar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalacion-en-linux-ubuntudebian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación en Linux (Ubuntu/Debian)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manejo-de-multiples-versiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manejo de múltiples versiones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-el-empaquetado-y-la-distribucion-el-archivo-jar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. El Empaquetado y la Distribución: El archivo JAR
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. El Empaquetado y la Distribución: El archivo JAR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-realmente-un-jar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es realmente un JAR?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-proceso-de-creacion-de-la-clase-al-paquete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El proceso de creación: De la clase al paquete
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="El proceso de creación: De la clase al paquete">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-el-empaquetado-simple-librerias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. El Empaquetado Simple (Librerías)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-el-empaquetado-ejecutable-aplicaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. El Empaquetado Ejecutable (Aplicaciones)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-ejecucion-y-el-control-del-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La Ejecución y el Control del Entorno
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-diagnostico-y-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Diagnóstico y Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Diagnóstico y Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-el-heap-dump" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. El Heap Dump
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-jstat-monitorizacion-en-tiempo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. JStat: Monitorización en tiempo real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-jstack-analizar-bloqueos-deadlocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. JStack: Analizar bloqueos (Deadlocks)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-jmap-extraccion-manual-de-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. Jmap: Extracción Manual de Memoria
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-optimizacion-para-contenedores-docker-y-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Optimización para Contenedores (Docker y Kubernetes)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Optimización para Contenedores (Docker y Kubernetes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flags-criticos-para-docker-java-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flags críticos para Docker (Java 10+):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-resumen-de-salud-del-servidor-checklist-para-el-sysadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Resumen de Salud del Servidor (Checklist para el SysAdmin)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="la-maquina-virtual-de-java-jvm-y-el-ecosistema-java">La Máquina Virtual de Java (JVM) y el Ecosistema Java</h1>
+<h2 id="1-conceptos-fundamentales">1. Conceptos Fundamentales</h2>
+<p>La JVM es la capa de software que permite que Java sea multiplataforma. Su objetivo es el concepto <strong><em>"Write Once, Run Anywhere"</em></strong>. A diferencia de otros lenguajes que compilan directamente a código máquina (específico de un procesador), Java usa un paso intermedio.</p>
+<p><strong>El flujo de ejecución:</strong>
+<code>Código Fuente (.java)</code> $\rightarrow$ <code>Compilador (javac)</code> $\rightarrow$ <code>Bytecode (.class)</code> $\rightarrow$ <code>JVM</code> $\rightarrow$ <code>Hardware</code></p>
+<p>El <strong>Bytecode</strong> es un lenguaje intermedio que solo la JVM entiende. Esto significa que el mismo archivo <code>.class</code> funciona en Windows, Linux o Mac, siempre que haya una JVM instalada en el sistema.</p>
+<hr />
+<h2 id="2-arquitectura-interna-de-la-jvm">2. Arquitectura Interna de la JVM</h2>
+<h3 id="a-el-class-loader-cargador-de-clases">A. El Class Loader (Cargador de Clases)</h3>
+<p>Se encarga de buscar y cargar los archivos <code>.class</code> en la memoria. No solo los lee, sino que actúa como un filtro de seguridad y compatibilidad:</p>
+<ul>
+<li><strong>Verificación:</strong> Comprueba que el bytecode sea válido y no esté corrupto.</li>
+<li><strong>Control de Versiones:</strong> El Class Loader revisa la versión del bytecode del archivo <code>.class</code>. Cada versión de Java tiene un número asignado (ej. Java 8 es v52, Java 17 es v61).<ul>
+<li><strong>Compatibilidad hacia atrás:</strong> Si la JVM es más nueva que la clase (ej. ejecutar una clase de Java 8 en una JVM 21), <strong>funciona sin problemas</strong>.</li>
+<li><strong>Incompatibilidad hacia adelante:</strong> Si la JVM es más vieja que la clase (ej. ejecutar una clase de Java 21 en una JVM 11), el Class Loader detecta que la versión es superior y lanza el error: <code>java.lang.UnsupportedClassVersionError</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="b-el-motor-de-ejecucion-execution-engine">B. El Motor de Ejecución (Execution Engine)</h3>
+<p>Es el componente que traduce el bytecode a instrucciones reales del procesador:
+*   <strong>Intérprete:</strong> Ejecuta el código línea a línea. Es rápido para arrancar, pero lento en procesos repetitivos.
+*   <strong>JIT (Just-In-Time Compiler):</strong> El optimizador. Detecta el "código caliente" (partes que se repiten mucho), las compila directamente a código máquina y las guarda en caché para que la siguiente vez se ejecuten a velocidad nativa.
+*   <strong>Garbage Collector (GC):</strong> El sistema automático que libera la memoria eliminando objetos que ya no tienen referencias activas.</p>
+<h3 id="c-distribucion-de-la-memoria-runtime-data-areas">C. Distribución de la Memoria (Runtime Data Areas)</h3>
+<p>La JVM organiza la RAM en zonas específicas:
+*   <strong>Metaspace:</strong> Guarda la estructura de las clases, constantes y metadatos. Usa memoria nativa del sistema.
+*   <strong>Heap (Montículo):</strong> La zona más importante. Aquí viven todos los objetos creados con <code>new</code>. Es un espacio compartido por todos los hilos.
+*   <strong>Stack (Pila):</strong> Almacena variables locales y el rastro de llamadas a métodos. Cada hilo tiene su propia pila. Cuando un método termina, su marco se borra instantáneamente.
+*   <strong>PC Register:</strong> Guarda la dirección de la instrucción que se está ejecutando en cada momento.</p>
+<hr />
+<h2 id="3-gestion-de-memoria-y-tuning-flags">3. Gestión de Memoria y Tuning (Flags)</h2>
+<p>La JVM es automática, pero se puede "tunear" al lanzarla mediante argumentos en la consola para evitar errores de memoria en producción.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Zona</th>
+<th style="text-align: left;">Comando Inicial</th>
+<th style="text-align: left;">Comando Máximo</th>
+<th style="text-align: left;">Error Común</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Heap</strong></td>
+<td style="text-align: left;"><code>-Xms&lt;size&gt;</code></td>
+<td style="text-align: left;"><code>-Xmx&lt;size&gt;</code></td>
+<td style="text-align: left;"><code>OutOfMemoryError</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Stack</strong></td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;"><code>-Xss&lt;size&gt;</code></td>
+<td style="text-align: left;"><code>StackOverflowError</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Metaspace</strong></td>
+<td style="text-align: left;"><code>-XX:MetaspaceSize</code></td>
+<td style="text-align: left;"><code>-XX:MaxMetaspaceSize</code></td>
+<td style="text-align: left;"><code>OutOfMemoryError: Metaspace</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo de ejecución optimizada:</strong>
+<code>java -Xms512m -Xmx2g -Xss1m -XX:MaxMetaspaceSize=256m MiPrograma</code></p>
+<hr />
+<p>Para explicar la pila (<strong>Stack</strong>) de una manera que sea imposible de olvidar, lo mejor es alejarse un momento del código y usar una <strong>analogía del mundo real</strong>, para luego aterrizarla en la informática.</p>
+<p>Aquí tienes una explicación detallada y pedagógica para tus apuntes.</p>
+<hr />
+<h3 id="que-es-realmente-una-pila-stack">¿Qué es realmente una Pila (Stack)?</h3>
+<p>Para entender el Stack, olvida el código un segundo y piensa en una <strong>pila de platos</strong>.</p>
+<h4 id="1-la-analogia-de-los-platos">1. La Analogía de los Platos</h4>
+<p>Imagina que tienes una pila de platos sobre la mesa:
+*   <strong>Para añadir un plato:</strong> Solo puedes ponerlo <strong>arriba del todo</strong>.
+*   <strong>Para quitar un plato:</strong> Solo puedes retirar el que está <strong>arriba del todo</strong>. No puedes sacar el de abajo sin tirar todos los demás.</p>
+<p>Esto es lo que en informática llamamos <strong>LIFO</strong> (<em>Last In, First Out</em>): <strong>El último en entrar es el primero en salir</strong>.</p>
+<h4 id="2-como-aplica-esto-a-la-jvm">2. ¿Cómo aplica esto a la JVM?</h4>
+<p>En Java, la "pila" no es de platos, sino de <strong>llamadas a métodos</strong>. Cada vez que el programa llama a un método, la JVM pone un "plato" (llamado <strong>Stack Frame</strong> o Marco de Pila) encima de la pila.</p>
+<p><strong>¿Qué hay dentro de cada "plato" (Frame)?</strong>
+Cada marco de pila es una pequeña caja que contiene todo lo necesario para que ese método funcione:
+1.  <strong>Variables Locales:</strong> Las variables que declaras dentro del método (ej. <code>int x = 5</code>).
+2.  <strong>Argumentos:</strong> Los valores que le pasaste al método al llamarlo.
+3.  <strong>Dirección de Retorno:</strong> Una "nota" que le dice a la JVM: <em>"Cuando termines este método, vuelve exactamente a esta línea del método anterior"</em>.</p>
+<h4 id="3-el-ciclo-de-vida-de-la-pila-paso-a-paso">3. El ciclo de vida de la Pila (Paso a paso)</h4>
+<p>Imagina este flujo: <code>Método A</code> $\rightarrow$ llama a <code>Método B</code> $\rightarrow$ llama a <code>Método C</code>.</p>
+<ol>
+<li>
+<p><strong>Entrada:</strong></p>
+<ul>
+<li>Se ejecuta <code>A</code>: La JVM pone el marco de <code>A</code> en la pila.</li>
+<li><code>A</code> llama a <code>B</code>: La JVM pone el marco de <code>B</code> <strong>encima</strong> de <code>A</code>.</li>
+<li><code>B</code> llama a <code>C</code>: La JVM pone el marco de <code>C</code> <strong>encima</strong> de <code>B</code>.</li>
+<li><em>En este momento, el programa está ejecutando <code>C</code>. <code>A</code> y <code>B</code> están "congelados" esperando debajo.</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Salida:</strong></p>
+<ul>
+<li><code>C</code> termina su trabajo: El marco de <code>C</code> se <strong>elimina</strong> (se saca el plato de arriba).</li>
+<li>La JVM mira la "nota de retorno" y vuelve a <code>B</code>.</li>
+<li><code>B</code> termina: Su marco se <strong>elimina</strong>.</li>
+<li>La JVM vuelve a <code>A</code>.</li>
+<li><code>A</code> termina: Su marco se <strong>elimina</strong>. La pila queda vacía.</li>
+</ul>
+</li>
+</ol>
+<h4 id="4-por-que-el-stack-es-tan-rapido">4. ¿Por qué el Stack es tan rápido?</h4>
+<p>A diferencia del <strong>Heap</strong> (donde el Garbage Collector tiene que buscar objetos por todo el montículo para ver cuáles borrar), el Stack es extremadamente eficiente porque:
+*   <strong>No hay búsqueda:</strong> La JVM solo tiene que mover un puntero hacia arriba o hacia abajo.
+*   <strong>Borrado instantáneo:</strong> No hace falta un recolector de basura; en cuanto el método termina, el marco desaparece automáticamente.</p>
+<hr />
+<h3 id="ejemplo-practico-provocando-un-outofmemoryerror">Ejemplo Práctico: Provocando un <code>OutOfMemoryError</code></h3>
+<p>Para que este código falle, debemos asegurarnos de que la JVM no tenga una cantidad infinita de RAM. Lo ideal es ejecutarlo limitando el Heap con el comando <code>-Xmx</code>.</p>
+<h4 id="el-codigo-provocaroomjava">El Código (<code>ProvocarOOM.java</code>)</h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ProvocarOOM</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">        </span><span class="c1">// Usamos una lista para mantener las referencias a los objetos.</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">        </span><span class="c1">// Si no los guardamos en una lista, el Garbage Collector los borraría </span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">        </span><span class="c1">// y nunca llenaríamos la memoria.</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">byte</span><span class="o">[]&gt;</span><span class="w"> </span><span class="n">listaDeDatos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Llenando el Heap... espera el crash."</span><span class="p">);</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">                </span><span class="c1">// Creamos un array de 1 MB en cada iteración</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">                </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">bloque</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="o">]</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">                </span><span class="n">listaDeDatos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">bloque</span><span class="p">);</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">                </span><span class="c1">// Imprimimos el tamaño actual para ver cómo crece</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Objetos en memoria: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">listaDeDatos</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" MB"</span><span class="p">);</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">OutOfMemoryError</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"\n¡BOOM! OutOfMemoryError detectado."</span><span class="p">);</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="como-ejecutarlo-para-que-falle-rapido">Cómo ejecutarlo para que falle rápido</h4>
+<p>Si ejecutas este programa normalmente, tardará mucho tiempo porque usará toda la RAM de tu PC. Para ver el error en acción rápidamente, <strong>limita el Heap a 100 MB</strong>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>javac<span class="w"> </span>ProvocarOOM.java
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>java<span class="w"> </span>-Xmx100m<span class="w"> </span>ProvocarOOM
+</code></pre></div></td></tr></table></div>
+<h3 id="que-esta-pasando-exactamente-en-la-jvm">¿Qué está pasando exactamente en la JVM?</h3>
+<ol>
+<li><strong>Asignación constante:</strong> El bucle <code>while(true)</code> crea arrays de 1MB. Cada array se coloca en el <strong>Heap</strong>.</li>
+<li><strong>Referencia activa:</strong> Al añadir cada array a la <code>listaDeDatos</code>, le estamos diciendo a la JVM: <em>"No borres esto, porque lo estoy usando en la lista"</em>.</li>
+<li><strong>Lucha del Garbage Collector:</strong> Cuando el Heap llega a los 100MB, el Garbage Collector se activa frenéticamente (dispara varios <strong>Full GCs</strong>) intentando liberar espacio.</li>
+<li><strong>El colapso:</strong> El GC se da cuenta de que no puede borrar nada porque todos los objetos están referenciados por la lista. Al no encontrar espacio para el siguiente array de 1MB, la JVM lanza el <code>java.lang.OutOfMemoryError: Java heap space</code>.</li>
+</ol>
+<hr />
+<h3 id="ejemplo-practico-provocando-un-stackoverflowerror">Ejemplo Práctico: Provocando un <code>StackOverflowError</code></h3>
+<p>A diferencia del error de memoria Heap, aquí no necesitamos crear objetos grandes. Solo necesitamos hacer que la pila de llamadas crezca hasta que no quepa ni un solo marco más.</p>
+<h4 id="el-codigo-provocarstackoverflowjava">El Código (<code>ProvocarStackOverflow.java</code>)</h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ProvocarStackOverflow</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Iniciando recursividad infinita..."</span><span class="p">);</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">        </span><span class="n">llamarSiguiente</span><span class="p">();</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">llamarSiguiente</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">        </span><span class="c1">// El método se llama a sí mismo sin ninguna condición de salida</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">        </span><span class="n">llamarSiguiente</span><span class="p">();</span><span class="w"> </span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="como-ejecutarlo-para-que-falle-rapido_1">Cómo ejecutarlo para que falle rápido</h4>
+<p>Si quieres ver cómo el parámetro <code>-Xss</code> (tamaño del stack) afecta al error, puedes probarlo así:</p>
+<ol>
+<li>
+<p><strong>Ejecución con stack pequeño (fallará muy rápido):</strong>
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>javac<span class="w"> </span>ProvocarStackOverflow.java
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>java<span class="w"> </span>-Xss256k<span class="w"> </span>ProvocarStackOverflow
+</code></pre></div></td></tr></table></div></p>
+</li>
+<li>
+<p><strong>Ejecución con stack más grande (tardará un poco más en fallar):</strong>
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>java<span class="w"> </span>-Xss2m<span class="w"> </span>ProvocarStackOverflow
+</code></pre></div></td></tr></table></div></p>
+</li>
+</ol>
+<h3 id="que-esta-pasando-exactamente-en-la-jvm_1">¿Qué está pasando exactamente en la JVM?</h3>
+<ol>
+<li><strong>Llamada inicial:</strong> El <code>main</code> llama a <code>llamarSiguiente()</code>. La JVM crea el primer <strong>Stack Frame</strong> en la pila.</li>
+<li><strong>Bucle infinito de llamadas:</strong> <code>llamarSiguiente()</code> vuelve a llamar a <code>llamarSiguiente()</code>. La JVM crea un segundo marco encima del primero. Luego un tercero, un cuarto... y así sucesivamente.</li>
+<li><strong>Agotamiento del espacio:</strong> Cada marco ocupa un espacio físico en la RAM (para guardar la dirección de retorno y las variables locales). Como nunca hay un <code>return</code> (ningún método termina), la pila crece hacia arriba sin parar.</li>
+<li><strong>El colapso:</strong> En el momento en que la pila alcanza el límite definido por <code>-Xss</code>, la JVM ya no puede añadir más marcos y lanza la excepción: <code>java.lang.StackOverflowError</code>.</li>
+</ol>
+<hr />
+<h2 id="4-el-garbage-collector-gc-y-la-estrategia-generacional">4. El Garbage Collector (GC) y la Estrategia Generacional</h2>
+<p>El GC no limpia todo el Heap a la vez porque congelaría la aplicación. Usa la <strong>Hipótesis Generacional</strong>: <em>"la mayoría de los objetos mueren jóvenes"</em>.</p>
+<h3 id="recoleccion-parcial-minor-gc-young-generation">Recolección Parcial: Minor GC (Young Generation)</h3>
+<p>La zona joven se divide en <strong>Eden</strong> y dos <strong>Survivor Spaces</strong> (S0 y S1).
+1. Los objetos nacen en el Eden.
+2. Cuando el Eden se llena $\rightarrow$ se dispara un <strong>Minor GC</strong>.
+3. Los objetos que siguen vivos pasan a los Survivor Spaces; el resto se borra.
+<em>Es un proceso rapidísimo y casi imperceptible.</em></p>
+<h3 id="recoleccion-total-major-gc-full-gc-old-generation">Recolección Total: Major GC / Full GC (Old Generation)</h3>
+<p>Si un objeto sobrevive a varios ciclos de Minor GC, se mueve a la <strong>Old Generation</strong> (objetos longevos).
+Cuando la Old Generation se llena $\rightarrow$ se dispara un <strong>Full GC</strong>.
+*   La JVM analiza todo el Heap y compacta la memoria.
+*   Provoca el efecto <strong>"Stop-the-World"</strong>: el programa se detiene por completo hasta que termina la limpieza.</p>
+<hr />
+<h2 id="monitorizacion-del-garbage-collector-gc-logging">Monitorización del Garbage Collector (GC Logging)</h2>
+<p>Si quieres saber exactamente cuándo el GC se activa, cuánto tiempo tarda y cuánta memoria libera, debes activar el <strong>GC Logging</strong> al lanzar el programa.</p>
+<h3 id="1-en-java-9-y-versiones-superiores-java-11-17-21">1. En Java 9 y versiones superiores (Java 11, 17, 21...)</h3>
+<p>Java introdujo una nueva arquitectura de logs llamada <em>Unified Logging</em>. Para ver el GC en la consola, usa el flag <code>-Xlog</code>:</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>java<span class="w"> </span>-Xlog:gc*<span class="w"> </span>MiPrograma
+</code></pre></div></td></tr></table></div>
+*   <strong><code>gc*</code></strong>: Le dice a la JVM que imprima todos los eventos relacionados con el Garbage Collector.
+*   Si quieres guardar el log en un archivo en lugar de verlo en consola:
+    <code>java -Xlog:gc*:file=gc_log.txt MiPrograma</code></p>
+<h3 id="2-en-java-8-versiones-antiguas">2. En Java 8 (Versiones antiguas)</h3>
+<p>En Java 8 los comandos eran más largos y específicos:</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>java<span class="w"> </span>-XX:+PrintGCDetails<span class="w"> </span>-XX:+PrintGCDateStamps<span class="w"> </span>MiPrograma
+</code></pre></div></td></tr></table></div>
+*   <strong><code>+PrintGCDetails</code></strong>: Muestra el detalle de cuánto se limpió en cada generación (Young vs Old).
+*   <strong><code>+PrintGCDateStamps</code></strong>: Añade la fecha y hora exacta de cada evento.</p>
+<h4 id="como-ejecutarlo-con-el-ejemplo-de-outofmemory-anterior">Cómo ejecutarlo con el ejemplo de OutOfMemory anterior</h4>
+<p>Si ejecutas este programa normalmente, tardará mucho tiempo porque usará toda la RAM de tu PC. Para ver el error en acción rápidamente, <strong>limita el Heap a 100 MB</strong>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>javac<span class="w"> </span>ProvocarOOM.java
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>java<span class="w"> </span>-Xmx100m<span class="w"> </span>-Xlog:gc*:file<span class="o">=</span>gc_log.txt<span class="w"> </span>ProvocarOOM
+</code></pre></div></td></tr></table></div>
+<hr />
+<h3 id="como-leer-el-log-del-gc-ejemplo-real">¿Cómo leer el log del GC? (Ejemplo real)</h3>
+<p>Cuando actives esto, verás líneas en la consola parecidas a esta:</p>
+<p><code>[gc,perf,pid=1234] GC(0) Pause Young (Normal) (G1 Evacuation Pause) 10M $\rightarrow$ 4M(20M), 0.0123456s</code></p>
+<p><strong>Traducción de lo que significa:</strong>
+*   <strong><code>GC(0)</code></strong>: Es la primera recolección de basura desde que arrancó el programa.
+*   <strong><code>Pause Young</code></strong>: Ha sido un <strong>Minor GC</strong> (solo ha limpiado la Generación Joven).
+*   <strong><code>10M $\rightarrow$ 4M</code></strong>: El Heap tenía 10 MB ocupados y, tras la limpieza, ahora solo tiene 4 MB. ¡Se liberaron 6 MB!
+*   <strong><code>0.0123456s</code></strong>: El programa se detuvo durante 12 milisegundos (el tiempo del "Stop-the-World").</p>
+<hr />
+<h2 id="5-ecosistema-jdk-jre-y-jvm">5. Ecosistema: JDK, JRE y JVM</h2>
+<ul>
+<li><strong>JVM (Java Virtual Machine):</strong> Solo el motor que ejecuta el bytecode.</li>
+<li><strong>JRE (Java Runtime Environment):</strong> $\text{JVM} + \text{Librerías estándar}$. Es lo que necesita un usuario para <em>correr</em> una app.</li>
+<li><strong>JDK (Java Development Kit):</strong> $\text{JRE} + \text{Herramientas de desarrollo (javac, debugger)}$. Es lo que usamos para <em>programar</em>.</li>
+</ul>
+<hr />
+<h2 id="6-proveedores-y-distribuciones-de-java">6. Proveedores y Distribuciones de Java</h2>
+<p>Java es una <strong>especificación</strong> (un estándar). Cualquier empresa puede crear su propia implementación.</p>
+<ul>
+<li><strong>OpenJDK:</strong> La implementación de código abierto y gratuita. Es la base de casi todas las demás.</li>
+<li><strong>Oracle JDK:</strong> La versión comercial de Oracle. Tiene optimizaciones avanzadas pero licencias costosas para empresas.</li>
+<li><strong>Distribuciones de terceros (basadas en OpenJDK):</strong><ul>
+<li><strong>Amazon Corretto:</strong> Optimizada para AWS, gratis y muy estable.</li>
+<li><strong>Eclipse Temurin (Adoptium):</strong> Recomendada para desarrollo general, neutra y comunitaria.</li>
+<li><strong>Azul Zulu / Microsoft Build of OpenJDK:</strong> Optimizadas para sus respectivas nubes y arquitecturas.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Contexto Histórico:</strong> Antes todo era <strong>Java Sun</strong>, luego pasó a <strong>Oracle</strong>. Para evitar el monopolio y los costes de licencias de Oracle, se impulsó el <strong>OpenJDK</strong>, permitiendo que Amazon, Microsoft y otros crearan sus propias versiones gratuitas.</p>
+<hr />
+<h2 id="7-versiones-de-java-y-lts">7. Versiones de Java y LTS</h2>
+<p>Java lanza versiones cada 6 meses, pero las más importantes son las <strong>LTS (Long Term Support)</strong>, que son las estables:
+*   <strong>Java 8:</strong> Introdujo Lambdas y la nueva API de fechas.
+*   <strong>Java 11:</strong> Mejoró la modularidad y permitió ejecutar <code>.java</code> sin compilar.
+*   <strong>Java 17:</strong> Trajo los <strong>Records</strong> (clases de datos compactas) y <strong>Sealed Classes</strong>.
+*   <strong>Java 21:</strong> Introdujo los <strong>Virtual Threads</strong> (hilos virtuales), permitiendo manejar millones de peticiones con muy poca RAM.</p>
+<hr />
+<h2 id="8-guia-practica-de-consola-y-linux">8. Guía Práctica de Consola y Linux</h2>
+<h3 id="compilar-y-ejecutar">Compilar y Ejecutar</h3>
+<ol>
+<li><strong>Compilar:</strong> <code>javac HolaMundo.java</code> $\rightarrow$ genera <code>HolaMundo.class</code>.</li>
+<li><strong>Ejecutar:</strong> <code>java HolaMundo</code> (sin el .class).</li>
+<li><strong>Ejecución rápida (Java 11+):</strong> <code>java HolaMundo.java</code>.</li>
+</ol>
+<h3 id="instalacion-en-linux-ubuntudebian">Instalación en Linux (Ubuntu/Debian)</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>openjdk-17-jdk
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>java<span class="w"> </span>-version
+</code></pre></div></td></tr></table></div>
+<h3 id="manejo-de-multiples-versiones">Manejo de múltiples versiones</h3>
+<ul>
+<li><strong>Manual:</strong> <code>sudo update-alternatives --config java</code> (permite elegir la versión instalada)</li>
+</ul>
+<p>Tienes razón. Después de haber desarrollado todo lo anterior con analogías y explicaciones detalladas, este apartado parece una simple "lista de comandos" y rompe el ritmo del libro.</p>
+<p>Vamos a reescribirlo siguiendo el mismo estilo narrativo, explicando el <strong>porqué</strong> de las cosas y no solo el <strong>cómo</strong>.</p>
+<hr />
+<h2 id="9-el-empaquetado-y-la-distribucion-el-archivo-jar">9. El Empaquetado y la Distribución: El archivo JAR</h2>
+<p>Cuando desarrollamos una aplicación, el resultado final es un conjunto de archivos <code>.class</code> (bytecode) y, posiblemente, carpetas con imágenes, archivos de configuración o sonidos. Enviar estos archivos sueltos al cliente o subirlos a un servidor sería un caos logístico y propenso a errores. Para solucionar esto, Java utiliza el <strong>JAR (Java ARchive)</strong>.</p>
+<h3 id="que-es-realmente-un-jar">¿Qué es realmente un JAR?</h3>
+<p>En términos sencillos, un archivo JAR es un archivo ZIP con esteroides. Internamente, es un comprimido que agrupa todas las clases y recursos del proyecto en un solo paquete. Sin embargo, tiene una diferencia fundamental con un ZIP común: el <strong>Manifiesto</strong>.</p>
+<p>El Manifiesto es un archivo de texto pequeño (<code>MANIFEST.MF</code>) que vive dentro del JAR y actúa como el "manual de instrucciones" para la JVM. Su función más importante es definir la <strong>Clase Principal (Main-Class)</strong>. Sin este archivo, la JVM sabría que hay código dentro del JAR, pero no sabría por cuál de todas las clases debe empezar a ejecutar el programa.</p>
+<h3 id="el-proceso-de-creacion-de-la-clase-al-paquete">El proceso de creación: De la clase al paquete</h3>
+<p>Para crear un JAR, utilizamos la herramienta <code>jar</code> incluida en el JDK. Dependiendo de lo que necesitemos, existen dos formas de empaquetar:</p>
+<h4 id="a-el-empaquetado-simple-librerias">A. El Empaquetado Simple (Librerías)</h4>
+<p>A veces no queremos que el JAR sea ejecutable, sino que sea una "librería" que otros programas usarán. En este caso, simplemente agrupamos los archivos:
+<code>jar cvf MiLibreria.jar HolaMundo.class</code>
+*   Aquí, <code>c</code> indica que estamos creando (<em>create</em>), <code>v</code> nos muestra el proceso en consola (<em>verbose</em>) y <code>f</code> nos permite asignar un nombre al archivo (<em>file</em>).</p>
+<h4 id="b-el-empaquetado-ejecutable-aplicaciones">B. El Empaquetado Ejecutable (Aplicaciones)</h4>
+<p>Para que un usuario pueda lanzar el programa simplemente con un comando, necesitamos indicarle a la JVM quién es la "clase jefe". En lugar de crear el archivo de manifiesto a mano, usamos el flag <code>e</code> (<em>entry point</em>):
+<code>jar cvfe MiPrograma.jar HolaMundo HolaMundo.class</code>
+*   Con este comando, le estamos diciendo a la JVM: <em>"Crea el archivo <code>MiPrograma.jar</code> y anota en el manifiesto que la ejecución comienza en la clase <code>HolaMundo</code>"</em>.</p>
+<hr />
+<h3 id="la-ejecucion-y-el-control-del-entorno">La Ejecución y el Control del Entorno</h3>
+<p>Una vez que tenemos el archivo <code>.jar</code>, la distribución es sencilla: solo necesitamos enviar ese único archivo al destino. Para ejecutarlo, ya no llamamos a una clase específica, sino al paquete completo:</p>
+<p><code>java -jar MiPrograma.jar</code></p>
+<p>Lo potente de este método es que podemos combinar la ejecución del JAR con todo el <strong>Tuning de la JVM</strong> que aprendimos anteriormente. El JAR es el "qué" se ejecuta, y los flags son el "cómo" se ejecuta.</p>
+<p><strong>Ejemplos de despliegue real:</strong>
+1.  <strong>Pasando datos al programa:</strong> Si el programa necesita argumentos externos, se añaden al final:
+    <code>java -jar MiPrograma.jar configuracion.txt</code>
+2.  <strong>Controlando el consumo de recursos:</strong> Si sabemos que el programa es pesado, limitamos el Heap antes de lanzar el JAR:
+    <code>java -Xmx512m -jar MiPrograma.jar</code></p>
+<p>En resumen, el archivo JAR es el puente final entre el desarrollo y la producción. Convierte un montón de archivos dispersos en un producto único, portable y configurable.</p>
+<h2 id="10-diagnostico-y-troubleshooting">10. Diagnóstico y Troubleshooting</h2>
+<p>Un SysAdmin no suele tener el código fuente, pero tiene acceso al proceso que corre en el servidor. Aquí es donde entran las herramientas de diagnóstico de la JVM.</p>
+<h3 id="a-el-heap-dump">A. El Heap Dump</h3>
+<p>Cuando un programa lanza un <code>OutOfMemoryError</code>, la JVM puede generar un archivo llamado <strong>Heap Dump</strong>. Es una foto exacta de todo lo que había en la memoria en el momento del crash.
+*   <strong>Cómo automatizarlo:</strong> Para que la JVM saque la foto sola al petar, usa este flag:
+    <code>-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/dump.hprof</code>
+*   <strong>Cómo analizarlo:</strong> Se usan herramientas como <strong>Eclipse MAT (Memory Analyzer Tool)</strong> o <strong>VisualVM</strong> para ver qué objeto se estaba "comiendo" la RAM.</p>
+<h3 id="b-jstat-monitorizacion-en-tiempo-real">B. JStat: Monitorización en tiempo real</h3>
+<p><code>jstat</code> es una herramienta de consola que permite ver el estado del Garbage Collector sin detener el programa.
+*   <strong>Comando:</strong> <code>jstat -gc &lt;pid&gt; 1000</code>
+    <em>(Muestra el estado del GC del proceso con el ID <code>&lt;pid&gt;</code> cada 1000ms).</em>
+*   <strong>Qué mirar:</strong> Si la columna de la <em>Old Generation</em> sube y no baja después de un Full GC, tienes una <strong>fuga de memoria (memory leak)</strong>.</p>
+<h3 id="c-jstack-analizar-bloqueos-deadlocks">C. JStack: Analizar bloqueos (Deadlocks)</h3>
+<p>Si el programa está "congelado" pero no consume CPU ni RAM, probablemente hay un bloqueo entre hilos.
+*   <strong>Comando:</strong> <code>jstack &lt;pid&gt;</code>
+    <em>(Saca un "Thread Dump": una lista de todos los hilos y en qué línea de código están bloqueados).</em></p>
+<h3 id="d-jmap-extraccion-manual-de-memoria">D. Jmap: Extracción Manual de Memoria</h3>
+<p>A veces no quieres esperar a que el programa falle para analizar la memoria. Si notas que el consumo de RAM está subiendo peligrosamente, puedes forzar un volcado de memoria (<em>Heap Dump</em>) manualmente utilizando la herramienta <strong><code>jmap</code></strong> (que viene incluida en el JDK).</p>
+<ul>
+<li><strong>Comando:</strong> <code>jmap -dump:format=b,file=snapshot.hprof &lt;pid&gt;</code></li>
+<li><strong><code>format=b</code></strong>: Indica que el volcado sea en formato binario (el estándar que entiende Eclipse MAT).</li>
+<li><strong><code>file=snapshot.hprof</code></strong>: El nombre del archivo que se va a crear.</li>
+<li><strong><code>&lt;pid&gt;</code></strong>: El ID del proceso Java (que puedes encontrar con <code>jps -l</code>).</li>
+</ul>
+<p>Cuando ejecutas un dump, la JVM hace un <strong>"Stop-the-World" total</strong>. Congela todos los hilos del programa para que la foto de la memoria sea coherente y no haya objetos moviéndose mientras se copian al disco. </p>
+<hr />
+<h2 id="11-optimizacion-para-contenedores-docker-y-kubernetes">11. Optimización para Contenedores (Docker y Kubernetes)</h2>
+<p>Java nació antes que Docker. Antiguamente, la JVM miraba la RAM total del servidor físico, no la del contenedor. Esto causaba que la JVM intentara usar 16GB de RAM en un contenedor limitado a 2GB, provocando que el sistema operativo matara el proceso (<strong>OOM Killer</strong>).</p>
+<h3 id="flags-criticos-para-docker-java-10">Flags críticos para Docker (Java 10+):</h3>
+<p>Para que la JVM sea "consciente" de que está en un contenedor, se usan estos flags:
+*   <strong><code>-XX:+UseContainerSupport</code></strong>: (Activado por defecto en versiones modernas). Hace que la JVM lea los límites de cgroups de Docker.
+*   <strong><code>-XX:MaxRAMPercentage=75.0</code></strong>: En lugar de poner un valor fijo como <code>-Xmx2g</code>, le decimos: <em>"Usa el 75% de la RAM que tenga asignada el contenedor"</em>. Esto es mucho más flexible si cambias el límite de RAM en Kubernetes sin querer tocar el comando de arranque.</p>
+<hr />
+<h2 id="12-resumen-de-salud-del-servidor-checklist-para-el-sysadmin">12. Resumen de Salud del Servidor (Checklist para el SysAdmin)</h2>
+<p>Si el servidor va lento o el programa falla, el SysAdmin debe revisar en este orden:
+1.  <strong>CPU alta $\rightarrow$</strong> ¿Hay un bucle infinito o el GC está trabajando demasiado (GC Thrashing)? $\rightarrow$ <em>Revisar logs de GC</em>.
+2.  <strong>RAM alta $\rightarrow$</strong> ¿El Heap está lleno? $\rightarrow$ <em>Revisar <code>-Xmx</code> y hacer un Heap Dump</em>.
+3.  <strong>Programa congelado $\rightarrow$</strong> ¿Hay un Deadlock? $\rightarrow$ <em>Hacer un <code>jstack</code></em>.
+4.  <strong>Crash repentino $\rightarrow$</strong> ¿Lo mató el OOM Killer de Linux? $\rightarrow$ <em>Revisar <code>dmesg | grep -i oom</code></em>.</p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Fahueso/programacion2ASIR" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["optimize", "content.code.copy", "search.suggest", "search.highlight", "navigation.top", "navigation.footer", "navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
