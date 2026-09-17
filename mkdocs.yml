@@ -1,20 +1,14 @@
-site_name: Implantación de aplicaciones Web ASIR
-site_url: https://fahueso.github.io/implantacionWebASIR/
+site_name: Programación II ASIR
+site_url: https://fahueso.github.io/programacion2bASIR/
 
 nav:
   - Unidades:
-    - UD1 - Aplicaciones web: unidades/ud01a.md
-    - UD1 - Entornos de Desarrollo y Servidores Web: unidades/ud01b.md
-    - UD1 - El Motor de Aplicación y la Base de Datos: unidades/ud01c.md
-  - Ejercicios:
-    - UD1 - Metodos HTTP: ejercicios/ud01/metodos.md
-    - UD1 - Cliente Servidor: ejercicios/ud01/python.md
-    - UD1 - Ajax: ejercicios/ud01/ajax.md
-      
+    - UD1 - Introducción a la programación. Lenguaje Java: unidades/ud01.md
+
   - Inicio: index.md
 
-repo_url: https://github.com/Fahueso/implantacionWebASIR
-repo_name: Fahueso/implantacionWebASIR
+repo_url: https://github.com/Fahueso/programacion2ASIR
+repo_name: Fahueso/programacion2ASIR
 
 theme:
   name: material
@@ -78,4 +72,4 @@ markdown_extensions:
 extra:
   social:
     - icon: fontawesome/brands/github 
-      link: https://github.com/Fahueso/implantacionWebASIR
+      link: https://github.com/Fahueso/programacion2ASIR
