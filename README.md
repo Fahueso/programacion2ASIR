@@ -23,6 +23,7 @@ El módulo cubre el ciclo completo del desarrollo en Java: desde los fundamentos
 | Unidad | Título |
 | :---: | :--- |
 | UD1 | Arquitectura y entorno de desarrollo web |
+| UD2 | Programación Estructurada: Estructuras de Control y Repetición |
 
 
 ### Boletines de Ejercicios
