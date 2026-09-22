@@ -4,7 +4,7 @@ site_url: https://fahueso.github.io/programacion2bASIR/
 nav:
   - Unidades:
     - UD1 - Introducción a la programación. Lenguaje Java: unidades/ud01.md
-    - UD1 - Programación Estructurada: Estructuras de Control y Repetición: unidades/ud02.md
+    - UD2 - Programación Estructurada: Estructuras de Control y Repetición: unidades/ud02.md
 
 
   - Inicio: index.md
