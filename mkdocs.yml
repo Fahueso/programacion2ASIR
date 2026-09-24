@@ -5,8 +5,8 @@ nav:
   - Unidades:
     - UD1 - Introducción a la programación. Lenguaje Java: unidades/ud01.md
     - UD2 - Programación Estructurada. Estructuras de Control y Repetición: unidades/ud02.md
-
-
+  - Ejercicios:
+    - UD2 - Practica selectivas: ejercicios/ud02/selectivas.md    
   - Inicio: index.md
 
 repo_url: https://github.com/Fahueso/programacion2ASIR
