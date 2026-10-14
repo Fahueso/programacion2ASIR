@@ -24,6 +24,8 @@ Este sitio recoge el material didáctico completo del módulo de **Programación
 | :---: | :--- |
 | UD1 | [Introducción a la programación. Lenguaje Java](unidades/ud01.md) |
 | UD2 | [Programación Estructurada: Estructuras de Control y Repetición](unidades/ud02.md) |
+| UD3 | [Métodos](unidades/ud03.md) |
+
 
 
 <!-- ### Boletines de Ejercicios
