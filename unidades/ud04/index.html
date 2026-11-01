@@ -1,0 +1,2308 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://fahueso.github.io/programacion2bASIR/unidades/ud04/">
+      
+      
+        <link rel="prev" href="../ud03/">
+      
+      
+        <link rel="next" href="../ud04b/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/camp.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>UD4 - Programación Orientada a Objetos en Java - Programación II ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unidad-4-programacion-orientada-a-objetos-en-java" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Programación II ASIR" class="md-header__button md-logo" aria-label="Programación II ASIR" data-md-component="logo">
+      
+  <img src="../../assets/images/camp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programación II ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UD4 - Programación Orientada a Objetos en Java
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Fahueso/programacion2ASIR" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Fahueso/programacion2ASIR
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../ud01/" class="md-tabs__link">
+          
+  
+  
+  Unidades
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ejercicios/ud02/selectivas/" class="md-tabs__link">
+          
+  
+  
+  Ejercicios
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Programación II ASIR" class="md-nav__button md-logo" aria-label="Programación II ASIR" data-md-component="logo">
+      
+  <img src="../../assets/images/camp.png" alt="logo">
+
+    </a>
+    Programación II ASIR
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Fahueso/programacion2ASIR" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Fahueso/programacion2ASIR
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidades
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unidades
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ud01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD1 - Introducción a la programación. Lenguaje Java
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ud02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD2 - Programación Estructurada. Estructuras de Control y Repetición
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ud03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD3 - Métodos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD4 - Programación Orientada a Objetos en Java
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD4 - Programación Orientada a Objetos en Java
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ud04b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD4 - Programación Orientada a Objetos en Java (estáticos)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ud05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD5 - Colecciones (ArrayList)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ud05b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD5 - Colecciones (Conjuntos y tablas hash)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ejercicios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ejercicios/ud02/selectivas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD2 - Practica selectivas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ejercicios/ud03/metodos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD3 - Practica métodos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ejercicios/ud04/boletin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD4 - Practica objetos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="unidad-4-programacion-orientada-a-objetos-en-java">Unidad 4. Programación Orientada a Objetos en Java</h1>
+<h2 id="introduccion">Introducción</h2>
+<p>Los conceptos de Programación Orientada a Objetos (POO) que ya conoces de Python (clases, objetos, atributos y métodos) son exactamente los mismos en Java. Lo que cambia es la sintaxis y el nivel de rigor que impone el lenguaje.</p>
+<p>En esta unidad aprenderás a aplicar los conocimientos que ya tienes de Python, comparando continuamente ambos lenguajes para facilitar la transición.</p>
+<p>Las principales diferencias son:</p>
+<ul>
+<li><strong>Tipado estático</strong>: hay que declarar el tipo de cada variable, atributo y parámetro.</li>
+<li><strong>Control de acceso real</strong> mediante modificadores como <code>private</code>.</li>
+<li><strong>Getters y setters</strong> para acceder a atributos privados.</li>
+<li><strong>Constructores</strong> con el nombre de la clase en lugar de <code>__init__()</code>.</li>
+<li>Métodos especiales como <code>toString()</code>, <code>equals()</code> y <code>hashCode()</code>, equivalentes a <code>__str__()</code>, <code>__eq__()</code> y <code>__hash__()</code>.</li>
+</ul>
+<hr />
+<h1 id="41-como-se-organiza-el-codigo">4.1. Cómo se organiza el código</h1>
+<p>En Java existe una organización más estricta del código:</p>
+<ul>
+<li>Una clase <code>public</code> debe estar en un archivo con el mismo nombre.</li>
+<li>La clase <code>Alumno</code> debe almacenarse en <code>Alumno.java</code>.</li>
+<li>El programa comienza a ejecutarse en el método <code>main()</code>.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span>
+<span class="normal"><a href="#__codelineno-0-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Principal</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">        </span><span class="n">Alumno</span><span class="w"> </span><span class="n">alumno1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Alumno</span><span class="p">(</span><span class="s">"Ana"</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">        </span><span class="n">alumno1</span><span class="p">.</span><span class="na">presentarse</span><span class="p">();</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="comparativa-python-vs-java">Comparativa Python vs Java</h2>
+<h3 id="python">Python</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Hola"</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="java">Java</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Principal</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Hola"</span><span class="p">);</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>En Python es habitual escribir código directamente en el archivo. En Java, todo código ejecutable debe encontrarse dentro de una clase y de un método.</p>
+<hr />
+<h1 id="42-de-python-a-java">4.2. De Python a Java</h1>
+<p>La misma clase escrita en ambos lenguajes.</p>
+<h2 id="python_1">Python</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Alumno</span><span class="p">:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">edad</span><span class="p">):</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">nombre</span> <span class="o">=</span> <span class="n">nombre</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">edad</span> <span class="o">=</span> <span class="n">edad</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">presentarse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Hola, me llamo </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nombre</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="n">alumno1</span> <span class="o">=</span> <span class="n">Alumno</span><span class="p">(</span><span class="s2">"Ana"</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="n">alumno1</span><span class="o">.</span><span class="n">presentarse</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="java_1">Java</h2>
+<h3 id="alumnojava">Alumno.java</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Alumno</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Alumno</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edad</span><span class="p">;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">presentarse</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Hola, me llamo "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nombre</span><span class="p">);</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="principaljava">Principal.java</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Principal</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">        </span><span class="n">Alumno</span><span class="w"> </span><span class="n">alumno1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Alumno</span><span class="p">(</span><span class="s">"Ana"</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">        </span><span class="n">alumno1</span><span class="p">.</span><span class="na">presentarse</span><span class="p">();</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Los conceptos son idénticos:</p>
+<ul>
+<li>Una clase es una plantilla.</li>
+<li>Un objeto es una instancia concreta.</li>
+<li>Los atributos almacenan información.</li>
+<li>Los métodos definen comportamientos.</li>
+</ul>
+<p>Java exige indicar explícitamente los tipos y utiliza la palabra clave <code>new</code> para crear objetos.</p>
+<blockquote>
+<p><strong>Simplificación temporal</strong></p>
+<p>En los primeros ejemplos los atributos no llevan <code>private</code>. Más adelante veremos la forma correcta de declararlos.</p>
+</blockquote>
+<hr />
+<h1 id="43-clases-objetos-y-atributos">4.3. Clases, objetos y atributos</h1>
+<p>Una clase es una plantilla a partir de la cual se crean objetos.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span>
+<span class="normal"><a href="#__codelineno-6-6">6</a></span>
+<span class="normal"><a href="#__codelineno-6-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Videojuego</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">titulo</span><span class="p">;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">genero</span><span class="p">;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">precio</span><span class="p">;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Creación de objetos:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="n">Videojuego</span><span class="w"> </span><span class="n">juego1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Videojuego</span><span class="p">();</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="n">Videojuego</span><span class="w"> </span><span class="n">juego2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Videojuego</span><span class="p">();</span>
+</code></pre></div></td></tr></table></div>
+<p>Cada objeto tiene sus propios valores:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">Alumno</span><span class="w"> </span><span class="n">alumno1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Alumno</span><span class="p">(</span><span class="s">"Ana"</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="n">alumno1</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Ana"</span><span class="p">;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="n">alumno1</span><span class="p">.</span><span class="na">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="valores-por-defecto">Valores por defecto</h2>
+<p>En Python un atributo no existe hasta que se crea.</p>
+<p>En Java, los atributos tienen un valor inicial automático.</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Valor por defecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int</code>, <code>long</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>double</code>, <code>float</code></td>
+<td><code>0.0</code></td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>String</code> y objetos</td>
+<td><code>null</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span><span class="w"> </span><span class="c1">// vale null</span>
+</code></pre></div></td></tr></table></div>
+<p>Intentar utilizar un objeto <code>null</code> provocará una excepción:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>NullPointerException
+</code></pre></div></td></tr></table></div>
+<hr />
+<h1 id="44-metodos-y-constructores">4.4. Métodos y constructores</h1>
+<h2 id="metodos">Métodos</h2>
+<p>Los métodos representan acciones.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">presentarse</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Hola, soy "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nombre</span><span class="p">);</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Pueden devolver valores:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getEdad</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">edad</span><span class="p">;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Uso:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alumno1</span><span class="p">.</span><span class="na">getEdad</span><span class="p">();</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="constructor">Constructor</h2>
+<h3 id="python_2">Python</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">edad</span><span class="p">):</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="java_2">Java</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="kd">public</span><span class="w"> </span><span class="nf">Alumno</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edad</span><span class="p">;</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Cuando ejecutamos:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="k">new</span><span class="w"> </span><span class="n">Alumno</span><span class="p">(</span><span class="s">"Ana"</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p>Java:</p>
+<ol>
+<li>Reserva memoria.</li>
+<li>Crea el objeto.</li>
+<li>Llama automáticamente al constructor.</li>
+</ol>
+<h2 id="constructor-por-defecto">Constructor por defecto</h2>
+<p>Si no escribimos ningún constructor:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span>
+<span class="normal"><a href="#__codelineno-17-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Alumno</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Java genera automáticamente:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span>
+<span class="normal"><a href="#__codelineno-18-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="kd">public</span><span class="w"> </span><span class="nf">Alumno</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Si escribimos un constructor propio:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">2</a></span>
+<span class="normal"><a href="#__codelineno-19-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="kd">public</span><span class="w"> </span><span class="nf">Alumno</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Entonces desaparece el constructor vacío.</p>
+<h2 id="sobrecarga-de-constructores">Sobrecarga de constructores</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
+<span class="normal"><a href="#__codelineno-20-2">2</a></span>
+<span class="normal"><a href="#__codelineno-20-3">3</a></span>
+<span class="normal"><a href="#__codelineno-20-4">4</a></span>
+<span class="normal"><a href="#__codelineno-20-5">5</a></span>
+<span class="normal"><a href="#__codelineno-20-6">6</a></span>
+<span class="normal"><a href="#__codelineno-20-7">7</a></span>
+<span class="normal"><a href="#__codelineno-20-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="kd">public</span><span class="w"> </span><span class="nf">Alumno</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="w">    </span><span class="k">this</span><span class="p">(</span><span class="s">"Sin nombre"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="p">}</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="kd">public</span><span class="w"> </span><span class="nf">Alumno</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edad</span><span class="p">;</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="la-palabra-reservada-this">La palabra reservada <code>this</code></h2>
+<table>
+<thead>
+<tr>
+<th>Python</th>
+<th>Java</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>self</code> es obligatorio</td>
+<td><code>this</code> es opcional en muchos casos</td>
+</tr>
+<tr>
+<td><code>self.nombre</code></td>
+<td><code>nombre</code> o <code>this.nombre</code></td>
+</tr>
+<tr>
+<td>Aparece en todos los métodos</td>
+<td>Es implícito</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<hr />
+<h1 id="45-encapsulacion">4.5. Encapsulación</h1>
+<p>La encapsulación consiste en proteger los datos internos de un objeto.</p>
+<h2 id="python_3">Python</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">_nombre</span>
+</code></pre></div></td></tr></table></div>
+<p>o</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">__nombre</span>
+</code></pre></div></td></tr></table></div>
+<p>Son convenciones que indican que no debería accederse desde fuera.</p>
+<h2 id="java_3">Java</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>Ahora esto no compila:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="n">alumno</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Ana"</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="modificadores-de-acceso">Modificadores de acceso</h2>
+<table>
+<thead>
+<tr>
+<th>Modificador</th>
+<th>Accesible desde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>private</code></td>
+<td>La propia clase</td>
+</tr>
+<tr>
+<td>Sin modificador</td>
+<td>Mismo paquete</td>
+</tr>
+<tr>
+<td><code>protected</code></td>
+<td>Paquete y subclases</td>
+</tr>
+<tr>
+<td><code>public</code></td>
+<td>Cualquier clase</td>
+</tr>
+</tbody>
+</table>
+<p>A partir de ahora utilizaremos:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span>
+<span class="normal"><a href="#__codelineno-26-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<hr />
+<h1 id="46-getters-y-setters">4.6. Getters y Setters</h1>
+<p>Lectura:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span>
+<span class="normal"><a href="#__codelineno-27-2">2</a></span>
+<span class="normal"><a href="#__codelineno-27-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getNombre</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Modificación:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
+<span class="normal"><a href="#__codelineno-28-2">2</a></span>
+<span class="normal"><a href="#__codelineno-28-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setNombre</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Uso:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span>
+<span class="normal"><a href="#__codelineno-29-2">2</a></span>
+<span class="normal"><a href="#__codelineno-29-3">3</a></span>
+<span class="normal"><a href="#__codelineno-29-4">4</a></span>
+<span class="normal"><a href="#__codelineno-29-5">5</a></span>
+<span class="normal"><a href="#__codelineno-29-6">6</a></span>
+<span class="normal"><a href="#__codelineno-29-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="n">Alumno</span><span class="w"> </span><span class="n">alumno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Alumno</span><span class="p">(</span><span class="s">"Ana"</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3"></a><span class="n">alumno</span><span class="p">.</span><span class="na">setNombre</span><span class="p">(</span><span class="s">"Ana María"</span><span class="p">);</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4"></a>
+<a id="__codelineno-29-5" name="__codelineno-29-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6"></a><span class="w">    </span><span class="n">alumno</span><span class="p">.</span><span class="na">getNombre</span><span class="p">()</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7"></a><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="comparativa-con-python">Comparativa con Python</h2>
+<table>
+<thead>
+<tr>
+<th>Python</th>
+<th>Java</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alumno.edad</code></td>
+<td><code>alumno.getEdad()</code></td>
+</tr>
+<tr>
+<td><code>alumno.edad = 20</code></td>
+<td><code>alumno.setEdad(20)</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="validacion">Validación</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-30-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-30-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-30-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-30-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-30-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-30-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-30-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-30-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-30-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setEdad</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2"></a>
+<a id="__codelineno-30-3" name="__codelineno-30-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">edad</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5"></a><span class="w">            </span><span class="s">"La edad no puede ser negativa: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">edad</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6"></a><span class="w">        </span><span class="p">);</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-30-8" name="__codelineno-30-8"></a>
+<a id="__codelineno-30-9" name="__codelineno-30-9"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edad</span><span class="p">;</span>
+<a id="__codelineno-30-10" name="__codelineno-30-10"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="validacion-desde-el-constructor">Validación desde el constructor</h2>
+<p>Incorrecto:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span>
+<span class="normal"><a href="#__codelineno-31-2">2</a></span>
+<span class="normal"><a href="#__codelineno-31-3">3</a></span>
+<span class="normal"><a href="#__codelineno-31-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="kd">public</span><span class="w"> </span><span class="nf">Alumno</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edad</span><span class="p">;</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Correcto:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1">1</a></span>
+<span class="normal"><a href="#__codelineno-32-2">2</a></span>
+<span class="normal"><a href="#__codelineno-32-3">3</a></span>
+<span class="normal"><a href="#__codelineno-32-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="kd">public</span><span class="w"> </span><span class="nf">Alumno</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3"></a><span class="w">    </span><span class="n">setEdad</span><span class="p">(</span><span class="n">edad</span><span class="p">);</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Así toda modificación pasa por las mismas reglas de validación.</p>
+<hr />
+<h1 id="47-tostring-y-override">4.7. toString() y @Override</h1>
+<p>Si imprimimos un objeto:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">alumno</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p>Java mostrará algo parecido a:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1"></a>Alumno@5fd0d5ae
+</code></pre></div></td></tr></table></div>
+<h2 id="sobrescribiendo-tostring">Sobrescribiendo toString()</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-35-1">1</a></span>
+<span class="normal"><a href="#__codelineno-35-2">2</a></span>
+<span class="normal"><a href="#__codelineno-35-3">3</a></span>
+<span class="normal"><a href="#__codelineno-35-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1"></a><span class="nd">@Override</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2"></a><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" ("</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">edad</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" años)"</span><span class="p">;</span>
+<a id="__codelineno-35-4" name="__codelineno-35-4"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Resultado:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-36-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1"></a>Ana (18 años)
+</code></pre></div></td></tr></table></div>
+<h2 id="que-hace-override">¿Qué hace @Override?</h2>
+<p>Indica al compilador que estamos sobrescribiendo un método heredado.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-37-1">1</a></span>
+<span class="normal"><a href="#__codelineno-37-2">2</a></span>
+<span class="normal"><a href="#__codelineno-37-3">3</a></span>
+<span class="normal"><a href="#__codelineno-37-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1"></a><span class="nd">@Override</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2"></a><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3"></a><span class="w">    </span><span class="p">...</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Ayuda a detectar errores de escritura.</p>
+<h2 id="comparativa-con-python_1">Comparativa con Python</h2>
+<table>
+<thead>
+<tr>
+<th>Python</th>
+<th>Java</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__str__()</code></td>
+<td><code>toString()</code></td>
+</tr>
+<tr>
+<td><code>print(objeto)</code></td>
+<td><code>System.out.println(objeto)</code></td>
+</tr>
+<tr>
+<td><code>__repr__()</code></td>
+<td>Sin equivalente directo</td>
+</tr>
+</tbody>
+</table>
+<h3 id="equivalente-a-las-f-strings">Equivalente a las f-strings</h3>
+<p>Python:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-38-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1"></a><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">nombre</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">edad</span><span class="si">}</span><span class="s2">)"</span>
+</code></pre></div></td></tr></table></div>
+<p>Java:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-39-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1"></a><span class="n">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="s">"%s (%d)"</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">edad</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<hr />
+<h1 id="48-comparar-objetos-frente-a-equals">4.8. Comparar objetos: == frente a equals()</h1>
+<p>Esta es una de las diferencias más importantes.</p>
+<table>
+<thead>
+<tr>
+<th>Python</th>
+<th>Java</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a is b</code></td>
+<td><code>a == b</code></td>
+<td>Mismo objeto</td>
+</tr>
+<tr>
+<td><code>a == b</code></td>
+<td><code>a.equals(b)</code></td>
+<td>Igual contenido</td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplo:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-1">1</a></span>
+<span class="normal"><a href="#__codelineno-40-2">2</a></span>
+<span class="normal"><a href="#__codelineno-40-3">3</a></span>
+<span class="normal"><a href="#__codelineno-40-4">4</a></span>
+<span class="normal"><a href="#__codelineno-40-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1"></a><span class="n">Alumno</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Alumno</span><span class="p">(</span><span class="s">"Ana"</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2"></a><span class="n">Alumno</span><span class="w"> </span><span class="n">a2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Alumno</span><span class="p">(</span><span class="s">"Ana"</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span>
+<a id="__codelineno-40-3" name="__codelineno-40-3"></a>
+<a id="__codelineno-40-4" name="__codelineno-40-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">a2</span><span class="p">);</span>
+<a id="__codelineno-40-5" name="__codelineno-40-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a1</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">a2</span><span class="p">));</span>
+</code></pre></div></td></tr></table></div>
+<p>Salida:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-41-1">1</a></span>
+<span class="normal"><a href="#__codelineno-41-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1"></a>false
+<a id="__codelineno-41-2" name="__codelineno-41-2"></a>true
+</code></pre></div></td></tr></table></div>
+<h2 id="caso-especial-string">Caso especial: String</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-42-1">1</a></span>
+<span class="normal"><a href="#__codelineno-42-2">2</a></span>
+<span class="normal"><a href="#__codelineno-42-3">3</a></span>
+<span class="normal"><a href="#__codelineno-42-4">4</a></span>
+<span class="normal"><a href="#__codelineno-42-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1"></a><span class="n">String</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"a"</span><span class="p">;</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2"></a><span class="n">String</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="s">"a"</span><span class="p">);</span>
+<a id="__codelineno-42-3" name="__codelineno-42-3"></a>
+<a id="__codelineno-42-4" name="__codelineno-42-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">s2</span><span class="p">);</span>
+<a id="__codelineno-42-5" name="__codelineno-42-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s1</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">s2</span><span class="p">));</span>
+</code></pre></div></td></tr></table></div>
+<p>Salida:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-43-1">1</a></span>
+<span class="normal"><a href="#__codelineno-43-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1"></a>false
+<a id="__codelineno-43-2" name="__codelineno-43-2"></a>true
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p><strong>Regla práctica</strong></p>
+<p>Para comparar objetos, incluyendo <code>String</code>, utiliza siempre <code>equals()</code>.</p>
+</blockquote>
+<hr />
+<h1 id="49-equals-y-hashcode">4.9. equals() y hashCode()</h1>
+<h2 id="equals">equals()</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-44-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-44-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-44-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-44-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-44-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-44-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-44-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-44-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-44-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-44-10">10</a></span>
+<span class="normal"><a href="#__codelineno-44-11">11</a></span>
+<span class="normal"><a href="#__codelineno-44-12">12</a></span>
+<span class="normal"><a href="#__codelineno-44-13">13</a></span>
+<span class="normal"><a href="#__codelineno-44-14">14</a></span>
+<span class="normal"><a href="#__codelineno-44-15">15</a></span>
+<span class="normal"><a href="#__codelineno-44-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1"></a><span class="nd">@Override</span>
+<a id="__codelineno-44-2" name="__codelineno-44-2"></a><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">equals</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-44-3" name="__codelineno-44-3"></a>
+<a id="__codelineno-44-4" name="__codelineno-44-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-44-5" name="__codelineno-44-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<a id="__codelineno-44-6" name="__codelineno-44-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-44-7" name="__codelineno-44-7"></a>
+<a id="__codelineno-44-8" name="__codelineno-44-8"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">obj</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">getClass</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">obj</span><span class="p">.</span><span class="na">getClass</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-44-9" name="__codelineno-44-9"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<a id="__codelineno-44-10" name="__codelineno-44-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-44-11" name="__codelineno-44-11"></a>
+<a id="__codelineno-44-12" name="__codelineno-44-12"></a><span class="w">    </span><span class="n">Alumno</span><span class="w"> </span><span class="n">otro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Alumno</span><span class="p">)</span><span class="w"> </span><span class="n">obj</span><span class="p">;</span>
+<a id="__codelineno-44-13" name="__codelineno-44-13"></a>
+<a id="__codelineno-44-14" name="__codelineno-44-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Objects</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">otro</span><span class="p">.</span><span class="na">nombre</span><span class="p">)</span>
+<a id="__codelineno-44-15" name="__codelineno-44-15"></a><span class="w">            </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">edad</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">otro</span><span class="p">.</span><span class="na">edad</span><span class="p">;</span>
+<a id="__codelineno-44-16" name="__codelineno-44-16"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="hashcode">hashCode()</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-45-1">1</a></span>
+<span class="normal"><a href="#__codelineno-45-2">2</a></span>
+<span class="normal"><a href="#__codelineno-45-3">3</a></span>
+<span class="normal"><a href="#__codelineno-45-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1"></a><span class="nd">@Override</span>
+<a id="__codelineno-45-2" name="__codelineno-45-2"></a><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">hashCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-45-3" name="__codelineno-45-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Objects</span><span class="p">.</span><span class="na">hash</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">edad</span><span class="p">);</span>
+<a id="__codelineno-45-4" name="__codelineno-45-4"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="equivalencia-con-python">Equivalencia con Python</h2>
+<table>
+<thead>
+<tr>
+<th>Python</th>
+<th>Java</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__eq__()</code></td>
+<td><code>equals()</code></td>
+</tr>
+<tr>
+<td><code>__hash__()</code></td>
+<td><code>hashCode()</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Regla fundamental</strong></p>
+<p>Si sobrescribes <code>equals()</code>, debes sobrescribir también <code>hashCode()</code>.</p>
+</blockquote>
+<hr />
+<h1 id="410-relaciones-entre-objetos">4.10. Relaciones entre objetos</h1>
+<p>Hasta ahora hemos creado objetos aislados. Sin embargo, en los programas reales los objetos interactúan entre sí.</p>
+<p>Por ejemplo:</p>
+<ul>
+<li>Un vehículo tiene un motor.</li>
+<li>Un alumno pertenece a un grupo.</li>
+<li>Un pedido contiene productos.</li>
+</ul>
+<p>La solución orientada a objetos consiste en relacionar clases mediante referencias.</p>
+<hr />
+<h1 id="411-el-concepto-de-referencia-entre-objetos">4.11. El concepto de referencia entre objetos</h1>
+<p>Hasta ahora hemos trabajado con atributos de tipos simples (<code>int</code>, <code>String</code>, <code>double</code>, <code>boolean</code>).</p>
+<p>Sin embargo, un atributo también puede almacenar una referencia a otro objeto:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-46-1">1</a></span>
+<span class="normal"><a href="#__codelineno-46-2">2</a></span>
+<span class="normal"><a href="#__codelineno-46-3">3</a></span>
+<span class="normal"><a href="#__codelineno-46-4">4</a></span>
+<span class="normal"><a href="#__codelineno-46-5">5</a></span>
+<span class="normal"><a href="#__codelineno-46-6">6</a></span>
+<span class="normal"><a href="#__codelineno-46-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Vehiculo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-46-2" name="__codelineno-46-2"></a>
+<a id="__codelineno-46-3" name="__codelineno-46-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<a id="__codelineno-46-4" name="__codelineno-46-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">marca</span><span class="p">;</span>
+<a id="__codelineno-46-5" name="__codelineno-46-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="p">;</span>
+<a id="__codelineno-46-6" name="__codelineno-46-6"></a>
+<a id="__codelineno-46-7" name="__codelineno-46-7"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="encadenamiento-de-llamadas">Encadenamiento de llamadas</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-47-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1"></a><span class="n">coche</span><span class="p">.</span><span class="na">getMotor</span><span class="p">().</span><span class="na">getModelo</span><span class="p">();</span>
+</code></pre></div></td></tr></table></div>
+<p>Paso a paso:</p>
+<ol>
+<li><code>coche.getMotor()</code> devuelve un objeto <code>Motor</code>.</li>
+<li><code>.getModelo()</code> obtiene el modelo de ese motor.</li>
+</ol>
+<hr />
+<h1 id="412-creacion-y-uso-de-objetos-relacionados">4.12. Creación y uso de objetos relacionados</h1>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-48-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-48-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-48-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-48-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-48-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-48-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-48-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-48-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-48-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-48-10">10</a></span>
+<span class="normal"><a href="#__codelineno-48-11">11</a></span>
+<span class="normal"><a href="#__codelineno-48-12">12</a></span>
+<span class="normal"><a href="#__codelineno-48-13">13</a></span>
+<span class="normal"><a href="#__codelineno-48-14">14</a></span>
+<span class="normal"><a href="#__codelineno-48-15">15</a></span>
+<span class="normal"><a href="#__codelineno-48-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1"></a><span class="n">Motor</span><span class="w"> </span><span class="n">motor1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Motor</span><span class="p">(</span>
+<a id="__codelineno-48-2" name="__codelineno-48-2"></a><span class="w">        </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-48-3" name="__codelineno-48-3"></a><span class="w">        </span><span class="s">"TDI"</span><span class="p">,</span>
+<a id="__codelineno-48-4" name="__codelineno-48-4"></a><span class="w">        </span><span class="mi">2000</span>
+<a id="__codelineno-48-5" name="__codelineno-48-5"></a><span class="p">);</span>
+<a id="__codelineno-48-6" name="__codelineno-48-6"></a>
+<a id="__codelineno-48-7" name="__codelineno-48-7"></a><span class="n">Vehiculo</span><span class="w"> </span><span class="n">coche</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vehiculo</span><span class="p">(</span>
+<a id="__codelineno-48-8" name="__codelineno-48-8"></a><span class="w">        </span><span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-48-9" name="__codelineno-48-9"></a><span class="w">        </span><span class="s">"Volkswagen"</span><span class="p">,</span>
+<a id="__codelineno-48-10" name="__codelineno-48-10"></a><span class="w">        </span><span class="n">motor1</span>
+<a id="__codelineno-48-11" name="__codelineno-48-11"></a><span class="p">);</span>
+<a id="__codelineno-48-12" name="__codelineno-48-12"></a>
+<a id="__codelineno-48-13" name="__codelineno-48-13"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span>
+<a id="__codelineno-48-14" name="__codelineno-48-14"></a><span class="w">        </span><span class="n">coche</span><span class="p">.</span><span class="na">getMotor</span><span class="p">()</span>
+<a id="__codelineno-48-15" name="__codelineno-48-15"></a><span class="w">              </span><span class="p">.</span><span class="na">getModelo</span><span class="p">()</span>
+<a id="__codelineno-48-16" name="__codelineno-48-16"></a><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p>Salida:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-49-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1"></a>TDI
+</code></pre></div></td></tr></table></div>
+<hr />
+<h1 id="413-referencias-y-el-valor-null">4.13. Referencias y el valor null</h1>
+<p>Cuando una referencia no apunta a ningún objeto, vale <code>null</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-50-1">1</a></span>
+<span class="normal"><a href="#__codelineno-50-2">2</a></span>
+<span class="normal"><a href="#__codelineno-50-3">3</a></span>
+<span class="normal"><a href="#__codelineno-50-4">4</a></span>
+<span class="normal"><a href="#__codelineno-50-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1"></a><span class="n">Vehiculo</span><span class="w"> </span><span class="n">coche</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vehiculo</span><span class="p">(</span>
+<a id="__codelineno-50-2" name="__codelineno-50-2"></a><span class="w">        </span><span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-50-3" name="__codelineno-50-3"></a><span class="w">        </span><span class="s">"Ford"</span><span class="p">,</span>
+<a id="__codelineno-50-4" name="__codelineno-50-4"></a><span class="w">        </span><span class="kc">null</span>
+<a id="__codelineno-50-5" name="__codelineno-50-5"></a><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="el-peligro-de-la-nullpointerexception">El peligro de la NullPointerException</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-51-1">1</a></span>
+<span class="normal"><a href="#__codelineno-51-2">2</a></span>
+<span class="normal"><a href="#__codelineno-51-3">3</a></span>
+<span class="normal"><a href="#__codelineno-51-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span>
+<a id="__codelineno-51-2" name="__codelineno-51-2"></a><span class="w">        </span><span class="n">coche</span><span class="p">.</span><span class="na">getMotor</span><span class="p">()</span>
+<a id="__codelineno-51-3" name="__codelineno-51-3"></a><span class="w">              </span><span class="p">.</span><span class="na">getModelo</span><span class="p">()</span>
+<a id="__codelineno-51-4" name="__codelineno-51-4"></a><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p>Si el vehículo no tiene motor:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-52-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1"></a>NullPointerException
+</code></pre></div></td></tr></table></div>
+<h2 id="buena-practica">Buena práctica</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-53-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-53-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-53-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-53-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-53-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-53-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-53-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-53-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-53-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-53-10">10</a></span>
+<span class="normal"><a href="#__codelineno-53-11">11</a></span>
+<span class="normal"><a href="#__codelineno-53-12">12</a></span>
+<span class="normal"><a href="#__codelineno-53-13">13</a></span>
+<span class="normal"><a href="#__codelineno-53-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">coche</span><span class="p">.</span><span class="na">getMotor</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-53-2" name="__codelineno-53-2"></a>
+<a id="__codelineno-53-3" name="__codelineno-53-3"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span>
+<a id="__codelineno-53-4" name="__codelineno-53-4"></a><span class="w">            </span><span class="n">coche</span><span class="p">.</span><span class="na">getMotor</span><span class="p">()</span>
+<a id="__codelineno-53-5" name="__codelineno-53-5"></a><span class="w">                  </span><span class="p">.</span><span class="na">getModelo</span><span class="p">()</span>
+<a id="__codelineno-53-6" name="__codelineno-53-6"></a><span class="w">    </span><span class="p">);</span>
+<a id="__codelineno-53-7" name="__codelineno-53-7"></a>
+<a id="__codelineno-53-8" name="__codelineno-53-8"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-53-9" name="__codelineno-53-9"></a>
+<a id="__codelineno-53-10" name="__codelineno-53-10"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span>
+<a id="__codelineno-53-11" name="__codelineno-53-11"></a><span class="w">            </span><span class="s">"El vehículo no tiene motor asignado."</span>
+<a id="__codelineno-53-12" name="__codelineno-53-12"></a><span class="w">    </span><span class="p">);</span>
+<a id="__codelineno-53-13" name="__codelineno-53-13"></a>
+<a id="__codelineno-53-14" name="__codelineno-53-14"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<hr />
+<h1 id="414-multiplicidad-uno-o-muchos">4.14. Multiplicidad: ¿Uno o muchos?</h1>
+<p>Al diseñar una relación debemos preguntarnos:</p>
+<blockquote>
+<p>¿Cuántos objetos participan en la relación?</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Situación</th>
+<th>Modelado en Java</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uno a uno (1:1)</td>
+<td>Atributo simple</td>
+<td><code>private Motor motor;</code></td>
+</tr>
+<tr>
+<td>Uno a muchos (1:N)</td>
+<td><code>ArrayList</code></td>
+<td><code>private ArrayList&lt;Rueda&gt; ruedas;</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplo:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-54-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-54-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-54-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-54-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-54-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-54-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-54-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-54-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-54-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-54-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<a id="__codelineno-54-2" name="__codelineno-54-2"></a>
+<a id="__codelineno-54-3" name="__codelineno-54-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Vehiculo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-54-4" name="__codelineno-54-4"></a>
+<a id="__codelineno-54-5" name="__codelineno-54-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<a id="__codelineno-54-6" name="__codelineno-54-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">marca</span><span class="p">;</span>
+<a id="__codelineno-54-7" name="__codelineno-54-7"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="p">;</span>
+<a id="__codelineno-54-8" name="__codelineno-54-8"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Rueda</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ruedas</span><span class="p">;</span>
+<a id="__codelineno-54-9" name="__codelineno-54-9"></a>
+<a id="__codelineno-54-10" name="__codelineno-54-10"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<hr />
+<h1 id="415-direccionalidad-quien-conoce-a-quien">4.15. Direccionalidad: ¿Quién conoce a quién?</h1>
+<h2 id="relacion-unidireccional">Relación unidireccional</h2>
+<p>Solo una clase conoce a la otra.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-55-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1"></a>Vehiculo ---&gt; Motor
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-56-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1"></a><span class="n">coche</span><span class="p">.</span><span class="na">getMotor</span><span class="p">();</span>
+</code></pre></div></td></tr></table></div>
+<p>Es la opción más habitual.</p>
+<h2 id="relacion-bidireccional">Relación bidireccional</h2>
+<p>Ambas clases almacenan referencias mutuas.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-57-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1"></a>Vehiculo &lt;----&gt; Motor
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-58-1">1</a></span>
+<span class="normal"><a href="#__codelineno-58-2">2</a></span>
+<span class="normal"><a href="#__codelineno-58-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1"></a><span class="n">vehiculo</span><span class="p">.</span><span class="na">getMotor</span><span class="p">();</span>
+<a id="__codelineno-58-2" name="__codelineno-58-2"></a>
+<a id="__codelineno-58-3" name="__codelineno-58-3"></a><span class="n">motor</span><span class="p">.</span><span class="na">getVehiculo</span><span class="p">();</span>
+</code></pre></div></td></tr></table></div>
+<p>Solo debe utilizarse cuando sea realmente necesario navegar en ambos sentidos.</p>
+<hr />
+<h1 id="416-ejemplo-completo-de-relaciones">4.16. Ejemplo completo de relaciones</h1>
+<h2 id="motorjava">Motor.java</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-59-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-59-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-59-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-59-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-59-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-59-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-59-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-59-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-59-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-59-10">10</a></span>
+<span class="normal"><a href="#__codelineno-59-11">11</a></span>
+<span class="normal"><a href="#__codelineno-59-12">12</a></span>
+<span class="normal"><a href="#__codelineno-59-13">13</a></span>
+<span class="normal"><a href="#__codelineno-59-14">14</a></span>
+<span class="normal"><a href="#__codelineno-59-15">15</a></span>
+<span class="normal"><a href="#__codelineno-59-16">16</a></span>
+<span class="normal"><a href="#__codelineno-59-17">17</a></span>
+<span class="normal"><a href="#__codelineno-59-18">18</a></span>
+<span class="normal"><a href="#__codelineno-59-19">19</a></span>
+<span class="normal"><a href="#__codelineno-59-20">20</a></span>
+<span class="normal"><a href="#__codelineno-59-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Motor</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-59-2" name="__codelineno-59-2"></a>
+<a id="__codelineno-59-3" name="__codelineno-59-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<a id="__codelineno-59-4" name="__codelineno-59-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">modelo</span><span class="p">;</span>
+<a id="__codelineno-59-5" name="__codelineno-59-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cilindrada</span><span class="p">;</span>
+<a id="__codelineno-59-6" name="__codelineno-59-6"></a>
+<a id="__codelineno-59-7" name="__codelineno-59-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Motor</span><span class="p">(</span>
+<a id="__codelineno-59-8" name="__codelineno-59-8"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
+<a id="__codelineno-59-9" name="__codelineno-59-9"></a><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">modelo</span><span class="p">,</span>
+<a id="__codelineno-59-10" name="__codelineno-59-10"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">cilindrada</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-59-11" name="__codelineno-59-11"></a>
+<a id="__codelineno-59-12" name="__codelineno-59-12"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<a id="__codelineno-59-13" name="__codelineno-59-13"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">modelo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">modelo</span><span class="p">;</span>
+<a id="__codelineno-59-14" name="__codelineno-59-14"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">cilindrada</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cilindrada</span><span class="p">;</span>
+<a id="__codelineno-59-15" name="__codelineno-59-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-59-16" name="__codelineno-59-16"></a>
+<a id="__codelineno-59-17" name="__codelineno-59-17"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getModelo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-59-18" name="__codelineno-59-18"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">modelo</span><span class="p">;</span>
+<a id="__codelineno-59-19" name="__codelineno-59-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-59-20" name="__codelineno-59-20"></a>
+<a id="__codelineno-59-21" name="__codelineno-59-21"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="vehiculojava">Vehiculo.java</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-60-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-60-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-60-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-60-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-60-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-60-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-60-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-60-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-60-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-60-10">10</a></span>
+<span class="normal"><a href="#__codelineno-60-11">11</a></span>
+<span class="normal"><a href="#__codelineno-60-12">12</a></span>
+<span class="normal"><a href="#__codelineno-60-13">13</a></span>
+<span class="normal"><a href="#__codelineno-60-14">14</a></span>
+<span class="normal"><a href="#__codelineno-60-15">15</a></span>
+<span class="normal"><a href="#__codelineno-60-16">16</a></span>
+<span class="normal"><a href="#__codelineno-60-17">17</a></span>
+<span class="normal"><a href="#__codelineno-60-18">18</a></span>
+<span class="normal"><a href="#__codelineno-60-19">19</a></span>
+<span class="normal"><a href="#__codelineno-60-20">20</a></span>
+<span class="normal"><a href="#__codelineno-60-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Vehiculo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-60-2" name="__codelineno-60-2"></a>
+<a id="__codelineno-60-3" name="__codelineno-60-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<a id="__codelineno-60-4" name="__codelineno-60-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">marca</span><span class="p">;</span>
+<a id="__codelineno-60-5" name="__codelineno-60-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="p">;</span>
+<a id="__codelineno-60-6" name="__codelineno-60-6"></a>
+<a id="__codelineno-60-7" name="__codelineno-60-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Vehiculo</span><span class="p">(</span>
+<a id="__codelineno-60-8" name="__codelineno-60-8"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
+<a id="__codelineno-60-9" name="__codelineno-60-9"></a><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">marca</span><span class="p">,</span>
+<a id="__codelineno-60-10" name="__codelineno-60-10"></a><span class="w">            </span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-60-11" name="__codelineno-60-11"></a>
+<a id="__codelineno-60-12" name="__codelineno-60-12"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<a id="__codelineno-60-13" name="__codelineno-60-13"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">marca</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">marca</span><span class="p">;</span>
+<a id="__codelineno-60-14" name="__codelineno-60-14"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">motor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">motor</span><span class="p">;</span>
+<a id="__codelineno-60-15" name="__codelineno-60-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-60-16" name="__codelineno-60-16"></a>
+<a id="__codelineno-60-17" name="__codelineno-60-17"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Motor</span><span class="w"> </span><span class="nf">getMotor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-60-18" name="__codelineno-60-18"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">motor</span><span class="p">;</span>
+<a id="__codelineno-60-19" name="__codelineno-60-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-60-20" name="__codelineno-60-20"></a>
+<a id="__codelineno-60-21" name="__codelineno-60-21"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="principaljava_1">Principal.java</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-61-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-61-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-61-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-61-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-61-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-61-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-61-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-61-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-61-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-61-10">10</a></span>
+<span class="normal"><a href="#__codelineno-61-11">11</a></span>
+<span class="normal"><a href="#__codelineno-61-12">12</a></span>
+<span class="normal"><a href="#__codelineno-61-13">13</a></span>
+<span class="normal"><a href="#__codelineno-61-14">14</a></span>
+<span class="normal"><a href="#__codelineno-61-15">15</a></span>
+<span class="normal"><a href="#__codelineno-61-16">16</a></span>
+<span class="normal"><a href="#__codelineno-61-17">17</a></span>
+<span class="normal"><a href="#__codelineno-61-18">18</a></span>
+<span class="normal"><a href="#__codelineno-61-19">19</a></span>
+<span class="normal"><a href="#__codelineno-61-20">20</a></span>
+<span class="normal"><a href="#__codelineno-61-21">21</a></span>
+<span class="normal"><a href="#__codelineno-61-22">22</a></span>
+<span class="normal"><a href="#__codelineno-61-23">23</a></span>
+<span class="normal"><a href="#__codelineno-61-24">24</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Principal</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-61-2" name="__codelineno-61-2"></a>
+<a id="__codelineno-61-3" name="__codelineno-61-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-61-4" name="__codelineno-61-4"></a>
+<a id="__codelineno-61-5" name="__codelineno-61-5"></a><span class="w">        </span><span class="n">Motor</span><span class="w"> </span><span class="n">motor1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Motor</span><span class="p">(</span>
+<a id="__codelineno-61-6" name="__codelineno-61-6"></a><span class="w">                </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-61-7" name="__codelineno-61-7"></a><span class="w">                </span><span class="s">"TDI"</span><span class="p">,</span>
+<a id="__codelineno-61-8" name="__codelineno-61-8"></a><span class="w">                </span><span class="mi">2000</span>
+<a id="__codelineno-61-9" name="__codelineno-61-9"></a><span class="w">        </span><span class="p">);</span>
+<a id="__codelineno-61-10" name="__codelineno-61-10"></a>
+<a id="__codelineno-61-11" name="__codelineno-61-11"></a><span class="w">        </span><span class="n">Vehiculo</span><span class="w"> </span><span class="n">coche</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vehiculo</span><span class="p">(</span>
+<a id="__codelineno-61-12" name="__codelineno-61-12"></a><span class="w">                </span><span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-61-13" name="__codelineno-61-13"></a><span class="w">                </span><span class="s">"Volkswagen"</span><span class="p">,</span>
+<a id="__codelineno-61-14" name="__codelineno-61-14"></a><span class="w">                </span><span class="n">motor1</span>
+<a id="__codelineno-61-15" name="__codelineno-61-15"></a><span class="w">        </span><span class="p">);</span>
+<a id="__codelineno-61-16" name="__codelineno-61-16"></a>
+<a id="__codelineno-61-17" name="__codelineno-61-17"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span>
+<a id="__codelineno-61-18" name="__codelineno-61-18"></a><span class="w">                </span><span class="n">coche</span><span class="p">.</span><span class="na">getMotor</span><span class="p">()</span>
+<a id="__codelineno-61-19" name="__codelineno-61-19"></a><span class="w">                      </span><span class="p">.</span><span class="na">getModelo</span><span class="p">()</span>
+<a id="__codelineno-61-20" name="__codelineno-61-20"></a><span class="w">        </span><span class="p">);</span>
+<a id="__codelineno-61-21" name="__codelineno-61-21"></a>
+<a id="__codelineno-61-22" name="__codelineno-61-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-61-23" name="__codelineno-61-23"></a>
+<a id="__codelineno-61-24" name="__codelineno-61-24"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<hr />
+<h1 id="417-clase-completa-de-ejemplo">4.17. Clase completa de ejemplo</h1>
+<h2 id="alumnojava_1">Alumno.java</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-62-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-62-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-62-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-62-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-62-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-62-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-62-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-62-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-62-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-62-10">10</a></span>
+<span class="normal"><a href="#__codelineno-62-11">11</a></span>
+<span class="normal"><a href="#__codelineno-62-12">12</a></span>
+<span class="normal"><a href="#__codelineno-62-13">13</a></span>
+<span class="normal"><a href="#__codelineno-62-14">14</a></span>
+<span class="normal"><a href="#__codelineno-62-15">15</a></span>
+<span class="normal"><a href="#__codelineno-62-16">16</a></span>
+<span class="normal"><a href="#__codelineno-62-17">17</a></span>
+<span class="normal"><a href="#__codelineno-62-18">18</a></span>
+<span class="normal"><a href="#__codelineno-62-19">19</a></span>
+<span class="normal"><a href="#__codelineno-62-20">20</a></span>
+<span class="normal"><a href="#__codelineno-62-21">21</a></span>
+<span class="normal"><a href="#__codelineno-62-22">22</a></span>
+<span class="normal"><a href="#__codelineno-62-23">23</a></span>
+<span class="normal"><a href="#__codelineno-62-24">24</a></span>
+<span class="normal"><a href="#__codelineno-62-25">25</a></span>
+<span class="normal"><a href="#__codelineno-62-26">26</a></span>
+<span class="normal"><a href="#__codelineno-62-27">27</a></span>
+<span class="normal"><a href="#__codelineno-62-28">28</a></span>
+<span class="normal"><a href="#__codelineno-62-29">29</a></span>
+<span class="normal"><a href="#__codelineno-62-30">30</a></span>
+<span class="normal"><a href="#__codelineno-62-31">31</a></span>
+<span class="normal"><a href="#__codelineno-62-32">32</a></span>
+<span class="normal"><a href="#__codelineno-62-33">33</a></span>
+<span class="normal"><a href="#__codelineno-62-34">34</a></span>
+<span class="normal"><a href="#__codelineno-62-35">35</a></span>
+<span class="normal"><a href="#__codelineno-62-36">36</a></span>
+<span class="normal"><a href="#__codelineno-62-37">37</a></span>
+<span class="normal"><a href="#__codelineno-62-38">38</a></span>
+<span class="normal"><a href="#__codelineno-62-39">39</a></span>
+<span class="normal"><a href="#__codelineno-62-40">40</a></span>
+<span class="normal"><a href="#__codelineno-62-41">41</a></span>
+<span class="normal"><a href="#__codelineno-62-42">42</a></span>
+<span class="normal"><a href="#__codelineno-62-43">43</a></span>
+<span class="normal"><a href="#__codelineno-62-44">44</a></span>
+<span class="normal"><a href="#__codelineno-62-45">45</a></span>
+<span class="normal"><a href="#__codelineno-62-46">46</a></span>
+<span class="normal"><a href="#__codelineno-62-47">47</a></span>
+<span class="normal"><a href="#__codelineno-62-48">48</a></span>
+<span class="normal"><a href="#__codelineno-62-49">49</a></span>
+<span class="normal"><a href="#__codelineno-62-50">50</a></span>
+<span class="normal"><a href="#__codelineno-62-51">51</a></span>
+<span class="normal"><a href="#__codelineno-62-52">52</a></span>
+<span class="normal"><a href="#__codelineno-62-53">53</a></span>
+<span class="normal"><a href="#__codelineno-62-54">54</a></span>
+<span class="normal"><a href="#__codelineno-62-55">55</a></span>
+<span class="normal"><a href="#__codelineno-62-56">56</a></span>
+<span class="normal"><a href="#__codelineno-62-57">57</a></span>
+<span class="normal"><a href="#__codelineno-62-58">58</a></span>
+<span class="normal"><a href="#__codelineno-62-59">59</a></span>
+<span class="normal"><a href="#__codelineno-62-60">60</a></span>
+<span class="normal"><a href="#__codelineno-62-61">61</a></span>
+<span class="normal"><a href="#__codelineno-62-62">62</a></span>
+<span class="normal"><a href="#__codelineno-62-63">63</a></span>
+<span class="normal"><a href="#__codelineno-62-64">64</a></span>
+<span class="normal"><a href="#__codelineno-62-65">65</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Objects</span><span class="p">;</span>
+<a id="__codelineno-62-2" name="__codelineno-62-2"></a>
+<a id="__codelineno-62-3" name="__codelineno-62-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Alumno</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-62-4" name="__codelineno-62-4"></a>
+<a id="__codelineno-62-5" name="__codelineno-62-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-62-6" name="__codelineno-62-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">;</span>
+<a id="__codelineno-62-7" name="__codelineno-62-7"></a>
+<a id="__codelineno-62-8" name="__codelineno-62-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Alumno</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-62-9" name="__codelineno-62-9"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-62-10" name="__codelineno-62-10"></a><span class="w">        </span><span class="n">setEdad</span><span class="p">(</span><span class="n">edad</span><span class="p">);</span>
+<a id="__codelineno-62-11" name="__codelineno-62-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-62-12" name="__codelineno-62-12"></a>
+<a id="__codelineno-62-13" name="__codelineno-62-13"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getNombre</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-62-14" name="__codelineno-62-14"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-62-15" name="__codelineno-62-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-62-16" name="__codelineno-62-16"></a>
+<a id="__codelineno-62-17" name="__codelineno-62-17"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setNombre</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-62-18" name="__codelineno-62-18"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-62-19" name="__codelineno-62-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-62-20" name="__codelineno-62-20"></a>
+<a id="__codelineno-62-21" name="__codelineno-62-21"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getEdad</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-62-22" name="__codelineno-62-22"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">edad</span><span class="p">;</span>
+<a id="__codelineno-62-23" name="__codelineno-62-23"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-62-24" name="__codelineno-62-24"></a>
+<a id="__codelineno-62-25" name="__codelineno-62-25"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setEdad</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-62-26" name="__codelineno-62-26"></a>
+<a id="__codelineno-62-27" name="__codelineno-62-27"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">edad</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-62-28" name="__codelineno-62-28"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span>
+<a id="__codelineno-62-29" name="__codelineno-62-29"></a><span class="w">                    </span><span class="s">"La edad no puede ser negativa: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">edad</span><span class="p">);</span>
+<a id="__codelineno-62-30" name="__codelineno-62-30"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-62-31" name="__codelineno-62-31"></a>
+<a id="__codelineno-62-32" name="__codelineno-62-32"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edad</span><span class="p">;</span>
+<a id="__codelineno-62-33" name="__codelineno-62-33"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-62-34" name="__codelineno-62-34"></a>
+<a id="__codelineno-62-35" name="__codelineno-62-35"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-62-36" name="__codelineno-62-36"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-62-37" name="__codelineno-62-37"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span>
+<a id="__codelineno-62-38" name="__codelineno-62-38"></a><span class="w">                </span><span class="s">"%s (%d años)"</span><span class="p">,</span>
+<a id="__codelineno-62-39" name="__codelineno-62-39"></a><span class="w">                </span><span class="n">nombre</span><span class="p">,</span>
+<a id="__codelineno-62-40" name="__codelineno-62-40"></a><span class="w">                </span><span class="n">edad</span><span class="p">);</span>
+<a id="__codelineno-62-41" name="__codelineno-62-41"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-62-42" name="__codelineno-62-42"></a>
+<a id="__codelineno-62-43" name="__codelineno-62-43"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-62-44" name="__codelineno-62-44"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">equals</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-62-45" name="__codelineno-62-45"></a>
+<a id="__codelineno-62-46" name="__codelineno-62-46"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-62-47" name="__codelineno-62-47"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<a id="__codelineno-62-48" name="__codelineno-62-48"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-62-49" name="__codelineno-62-49"></a>
+<a id="__codelineno-62-50" name="__codelineno-62-50"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">obj</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">getClass</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">obj</span><span class="p">.</span><span class="na">getClass</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-62-51" name="__codelineno-62-51"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<a id="__codelineno-62-52" name="__codelineno-62-52"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-62-53" name="__codelineno-62-53"></a>
+<a id="__codelineno-62-54" name="__codelineno-62-54"></a><span class="w">        </span><span class="n">Alumno</span><span class="w"> </span><span class="n">otro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Alumno</span><span class="p">)</span><span class="w"> </span><span class="n">obj</span><span class="p">;</span>
+<a id="__codelineno-62-55" name="__codelineno-62-55"></a>
+<a id="__codelineno-62-56" name="__codelineno-62-56"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Objects</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">otro</span><span class="p">.</span><span class="na">nombre</span><span class="p">)</span>
+<a id="__codelineno-62-57" name="__codelineno-62-57"></a><span class="w">                </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">edad</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">otro</span><span class="p">.</span><span class="na">edad</span><span class="p">;</span>
+<a id="__codelineno-62-58" name="__codelineno-62-58"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-62-59" name="__codelineno-62-59"></a>
+<a id="__codelineno-62-60" name="__codelineno-62-60"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-62-61" name="__codelineno-62-61"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">hashCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-62-62" name="__codelineno-62-62"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Objects</span><span class="p">.</span><span class="na">hash</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">edad</span><span class="p">);</span>
+<a id="__codelineno-62-63" name="__codelineno-62-63"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-62-64" name="__codelineno-62-64"></a>
+<a id="__codelineno-62-65" name="__codelineno-62-65"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="principaljava_2">Principal.java</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-63-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-63-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-63-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-63-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-63-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-63-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-63-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-63-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-63-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-63-10">10</a></span>
+<span class="normal"><a href="#__codelineno-63-11">11</a></span>
+<span class="normal"><a href="#__codelineno-63-12">12</a></span>
+<span class="normal"><a href="#__codelineno-63-13">13</a></span>
+<span class="normal"><a href="#__codelineno-63-14">14</a></span>
+<span class="normal"><a href="#__codelineno-63-15">15</a></span>
+<span class="normal"><a href="#__codelineno-63-16">16</a></span>
+<span class="normal"><a href="#__codelineno-63-17">17</a></span>
+<span class="normal"><a href="#__codelineno-63-18">18</a></span>
+<span class="normal"><a href="#__codelineno-63-19">19</a></span>
+<span class="normal"><a href="#__codelineno-63-20">20</a></span>
+<span class="normal"><a href="#__codelineno-63-21">21</a></span>
+<span class="normal"><a href="#__codelineno-63-22">22</a></span>
+<span class="normal"><a href="#__codelineno-63-23">23</a></span>
+<span class="normal"><a href="#__codelineno-63-24">24</a></span>
+<span class="normal"><a href="#__codelineno-63-25">25</a></span>
+<span class="normal"><a href="#__codelineno-63-26">26</a></span>
+<span class="normal"><a href="#__codelineno-63-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.HashSet</span><span class="p">;</span>
+<a id="__codelineno-63-2" name="__codelineno-63-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Set</span><span class="p">;</span>
+<a id="__codelineno-63-3" name="__codelineno-63-3"></a>
+<a id="__codelineno-63-4" name="__codelineno-63-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Principal</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-63-5" name="__codelineno-63-5"></a>
+<a id="__codelineno-63-6" name="__codelineno-63-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-63-7" name="__codelineno-63-7"></a>
+<a id="__codelineno-63-8" name="__codelineno-63-8"></a><span class="w">        </span><span class="n">Alumno</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Alumno</span><span class="p">(</span><span class="s">"Ana"</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span>
+<a id="__codelineno-63-9" name="__codelineno-63-9"></a><span class="w">        </span><span class="n">Alumno</span><span class="w"> </span><span class="n">a2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Alumno</span><span class="p">(</span><span class="s">"Ana"</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span>
+<a id="__codelineno-63-10" name="__codelineno-63-10"></a>
+<a id="__codelineno-63-11" name="__codelineno-63-11"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a1</span><span class="p">);</span>
+<a id="__codelineno-63-12" name="__codelineno-63-12"></a>
+<a id="__codelineno-63-13" name="__codelineno-63-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">a2</span><span class="p">);</span>
+<a id="__codelineno-63-14" name="__codelineno-63-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a1</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">a2</span><span class="p">));</span>
+<a id="__codelineno-63-15" name="__codelineno-63-15"></a>
+<a id="__codelineno-63-16" name="__codelineno-63-16"></a><span class="w">        </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Alumno</span><span class="o">&gt;</span><span class="w"> </span><span class="n">grupo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-63-17" name="__codelineno-63-17"></a>
+<a id="__codelineno-63-18" name="__codelineno-63-18"></a><span class="w">        </span><span class="n">grupo</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">a1</span><span class="p">);</span>
+<a id="__codelineno-63-19" name="__codelineno-63-19"></a><span class="w">        </span><span class="n">grupo</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">a2</span><span class="p">);</span>
+<a id="__codelineno-63-20" name="__codelineno-63-20"></a>
+<a id="__codelineno-63-21" name="__codelineno-63-21"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">grupo</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+<a id="__codelineno-63-22" name="__codelineno-63-22"></a>
+<a id="__codelineno-63-23" name="__codelineno-63-23"></a><span class="w">        </span><span class="n">a1</span><span class="p">.</span><span class="na">setEdad</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">);</span>
+<a id="__codelineno-63-24" name="__codelineno-63-24"></a>
+<a id="__codelineno-63-25" name="__codelineno-63-25"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-63-26" name="__codelineno-63-26"></a>
+<a id="__codelineno-63-27" name="__codelineno-63-27"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<hr />
+<h1 id="resumen">Resumen</h1>
+<p>Al finalizar esta unidad debes ser capaz de:</p>
+<ul>
+<li>Crear clases y objetos.</li>
+<li>Utilizar atributos y métodos.</li>
+<li>Implementar constructores.</li>
+<li>Aplicar encapsulación mediante <code>private</code>.</li>
+<li>Crear getters y setters.</li>
+<li>Validar datos.</li>
+<li>Utilizar <code>this</code>.</li>
+<li>Sobrescribir <code>toString()</code>.</li>
+<li>Diferenciar <code>==</code> y <code>equals()</code>.</li>
+<li>Implementar correctamente <code>hashCode()</code>.</li>
+<li>Comprender el uso de <code>null</code>.</li>
+<li>Relacionar objetos mediante referencias.</li>
+<li>Diseñar relaciones 1:1 y 1:N.</li>
+<li>Implementar relaciones unidireccionales y bidireccionales sencillas.</li>
+</ul>
+<hr />
+<h1 id="errores-tipicos-de-quien-viene-de-python">Errores típicos de quien viene de Python</h1>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Corrección</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Comparar objetos con <code>==</code></td>
+<td>Utilizar <code>equals()</code></td>
+</tr>
+<tr>
+<td>Comparar <code>String</code> con <code>==</code></td>
+<td>Utilizar <code>equals()</code></td>
+</tr>
+<tr>
+<td>Llamar a <code>new Alumno()</code> sin constructor vacío</td>
+<td>Crear constructor sin parámetros</td>
+</tr>
+<tr>
+<td>Sobrescribir <code>equals()</code> sin <code>hashCode()</code></td>
+<td>Sobrescribir ambos</td>
+</tr>
+<tr>
+<td>Saltarse la validación en el constructor</td>
+<td>Utilizar setters</td>
+</tr>
+<tr>
+<td>Utilizar una referencia <code>null</code></td>
+<td>Inicializar o comprobar antes</td>
+</tr>
+<tr>
+<td>Escribir código fuera de métodos</td>
+<td>Colocarlo dentro de <code>main()</code></td>
+</tr>
+<tr>
+<td>Colocar una clase <code>public</code> en otro archivo</td>
+<td>Nombre de clase y archivo deben coincidir</td>
+</tr>
+<tr>
+<td>Invocar métodos sobre una referencia <code>null</code></td>
+<td>Comprobar con <code>if</code> antes de acceder</td>
+</tr>
+<tr>
+<td>Crear relaciones bidireccionales innecesarias</td>
+<td>Preferir relaciones unidireccionales</td>
+</tr>
+<tr>
+<td>Guardar muchos objetos en atributos duplicados</td>
+<td>Utilizar clases relacionadas</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="apendice-comparativa-rapida-python-vs-java">Apéndice: Comparativa rápida Python vs Java</h1>
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>Python</th>
+<th>Java</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clase</td>
+<td><code>class Alumno:</code></td>
+<td><code>public class Alumno</code></td>
+</tr>
+<tr>
+<td>Constructor</td>
+<td><code>__init__()</code></td>
+<td><code>Alumno()</code></td>
+</tr>
+<tr>
+<td>Referencia al objeto</td>
+<td><code>self</code></td>
+<td><code>this</code></td>
+</tr>
+<tr>
+<td>Crear objeto</td>
+<td><code>Alumno()</code></td>
+<td><code>new Alumno()</code></td>
+</tr>
+<tr>
+<td>Método texto</td>
+<td><code>__str__()</code></td>
+<td><code>toString()</code></td>
+</tr>
+<tr>
+<td>Comparación contenido</td>
+<td><code>__eq__()</code></td>
+<td><code>equals()</code></td>
+</tr>
+<tr>
+<td>Hash</td>
+<td><code>__hash__()</code></td>
+<td><code>hashCode()</code></td>
+</tr>
+<tr>
+<td>Privacidad</td>
+<td>Convención</td>
+<td><code>private</code></td>
+</tr>
+<tr>
+<td>Tipado</td>
+<td>Dinámico</td>
+<td>Estático</td>
+</tr>
+<tr>
+<td>Ejecución</td>
+<td>Interpretado</td>
+<td>Compilado + JVM</td>
+</tr>
+<tr>
+<td>Relación 1:1</td>
+<td>Referencia</td>
+<td>Referencia</td>
+</tr>
+<tr>
+<td>Relación 1:N</td>
+<td>Lista</td>
+<td><code>ArrayList</code></td>
+</tr>
+<tr>
+<td>Nulo</td>
+<td><code>None</code></td>
+<td><code>null</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../ud03/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: UD3 - Métodos">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                UD3 - Métodos
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../ud04b/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: UD4 - Programación Orientada a Objetos en Java (estáticos)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                UD4 - Programación Orientada a Objetos en Java (estáticos)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Fahueso/programacion2ASIR" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["optimize", "content.code.copy", "search.suggest", "search.highlight", "navigation.top", "navigation.footer", "navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>
