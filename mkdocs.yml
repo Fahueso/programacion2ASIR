@@ -6,10 +6,14 @@ nav:
     - UD1 - Introducción a la programación. Lenguaje Java: unidades/ud01.md
     - UD2 - Programación Estructurada. Estructuras de Control y Repetición: unidades/ud02.md
     - UD3 - Métodos: unidades/ud03.md
-    - UD4 - Programación Orientada a Objetos en Java: unidades/ud03.md
+    - UD4 - Programación Orientada a Objetos en Java: unidades/ud04.md
+    - UD5 - Colecciones (ArrayList): unidades/ud05.md
+    - UD5 - Colecciones (Conjuntos y tablas hash): unidades/ud05b.md
+
   - Ejercicios:
     - UD2 - Practica selectivas: ejercicios/ud02/selectivas.md
     - UD3 - Practica métodos: ejercicios/ud03/metodos.md
+    - UD4 - Practica objetos: ejercicios/ud04/boletin.md
   - Inicio: index.md
 
 repo_url: https://github.com/Fahueso/programacion2ASIR
