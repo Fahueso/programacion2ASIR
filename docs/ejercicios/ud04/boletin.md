@@ -384,8 +384,9 @@ Este videojuego todavía no tiene desarrolladora asignada.
 
 ---
 
-# Proyecto Final
 
+
+# Proyecto Final
 ## Ejercicio 17. Catálogo de videojuegos
 
 Desarrolla una aplicación formada por las siguientes clases.
@@ -449,6 +450,38 @@ equals()
 
 en la clase `Videojuego`.
 
+#### Elementos estáticos
+
+Añade a la clase `Videojuego`:
+
+```java
+private static int totalVideojuegos = 0;
+```
+
+El contador deberá incrementarse cada vez que se cree un objeto `Videojuego`.
+
+Implementa además:
+
+```java
+public static int getTotalVideojuegos()
+```
+
+que devuelva el número total de videojuegos creados.
+
+Añade también la constante:
+
+```java
+public static final double IVA = 0.21;
+```
+
+e implementa:
+
+```java
+public double getPrecioConIva()
+```
+
+que devuelva el precio final aplicando el IVA al precio base.
+
 #### Relaciones
 
 Cada videojuego deberá pertenecer a una desarrolladora.
@@ -463,5 +496,5 @@ Desde `main()`:
 4. Compara varios videojuegos utilizando `equals()`.
 5. Comprueba el funcionamiento de las validaciones.
 6. Comprueba el comportamiento cuando una desarrolladora vale `null`.
-
----
+7. Muestra el número total de videojuegos creados utilizando `Videojuego.getTotalVideojuegos()`.
+8. Muestra el precio con IVA de varios videojuegos utilizando `getPrecioConIva()`.
