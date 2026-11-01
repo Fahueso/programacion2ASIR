@@ -26,6 +26,7 @@ Este sitio recoge el material didáctico completo del módulo de **Programación
 | UD2 | [Programación Estructurada: Estructuras de Control y Repetición](unidades/ud02.md) |
 | UD3 | [Métodos](unidades/ud03.md) |
 | UD4 | [Programación Orientada a Objetos en Java](unidades/ud04.md) |
+| UD4 | [Programación Orientada a Objetos en Java (estáticos)](unidades/ud04b.md) |
 | UD5 | [Colecciones (ArrayList)](unidades/ud05.md) |
 | UD5 | [Colecciones (Conjuntos y tablas hash)](unidades/ud05b.md) |
 
