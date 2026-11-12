@@ -1,5 +1,5 @@
 # Boletín de Ejercicios
-# Unidad 5. Programación Orientada a Objetos en Java
+# Unidad 4. Programación Orientada a Objetos en Java
 
 ## Introducción
 
@@ -498,3 +498,375 @@ Desde `main()`:
 6. Comprueba el comportamiento cuando una desarrolladora vale `null`.
 7. Muestra el número total de videojuegos creados utilizando `Videojuego.getTotalVideojuegos()`.
 8. Muestra el precio con IVA de varios videojuegos utilizando `getPrecioConIva()`.
+
+
+# Parte VI. Colecciones y relaciones entre objetos
+
+## Ejercicio 18. Clase Persona
+
+Crea una nueva clase:
+
+```java
+Persona
+```
+
+con los atributos:
+
+```java
+private int id;
+private String nombre;
+```
+
+Implementa:
+
+- Constructor.
+- Getters.
+- Setters.
+- `toString()`.
+
+### Ejemplo
+
+```java
+Persona p1 = new Persona(1, "Ana");
+Persona p2 = new Persona(2, "Luis");
+```
+
+---
+
+## Ejercicio 19. Autores de videojuegos
+
+Modifica la clase `Videojuego`.
+
+Añade el atributo:
+
+```java
+private ArrayList<Persona> autores;
+```
+
+Inicialízalo en los constructores.
+
+Implementa los métodos:
+
+```java
+public void agregarAutor(Persona autor)
+
+public boolean eliminarAutor(int id)
+
+public int getNumeroAutores()
+```
+
+### Actividades
+
+1. Crear un videojuego.
+2. Añadir varios autores.
+3. Mostrar todos los autores del videojuego.
+4. Eliminar uno de ellos.
+5. Comprobar el número de autores.
+
+### Ejemplo
+
+```text
+Videojuego: Minecraft
+
+Autores:
+- Ana
+- Luis
+- Marta
+```
+
+### Cuestión
+
+¿Puede un videojuego tener varios autores?
+
+¿Puede una misma persona participar en distintos videojuegos?
+
+Justifica tu respuesta.
+
+---
+
+## Ejercicio 20. Trabajadores de una desarrolladora
+
+Modifica la clase `Desarrolladora`.
+
+Añade el atributo:
+
+```java
+private ArrayList<Persona> trabajadores;
+```
+
+Inicialízalo en el constructor.
+
+Implementa los métodos:
+
+```java
+public void contratar(Persona persona)
+
+public boolean despedir(int id)
+
+public int getNumeroTrabajadores()
+```
+
+### Actividades
+
+1. Crear una desarrolladora.
+2. Contratar varios trabajadores.
+3. Mostrar la plantilla completa.
+4. Despedir un trabajador.
+5. Comprobar el número de trabajadores restantes.
+
+### Ejemplo
+
+```text
+Mojang Studios
+
+Trabajadores:
+- Ana
+- Luis
+- Marta
+```
+
+---
+
+## Ejercicio 21. Comprobar si una persona trabaja en la desarrolladora
+
+Implementa en la clase `Desarrolladora` el método:
+
+```java
+public boolean trabajaAqui(Persona persona)
+```
+
+El método devolverá:
+
+- `true` si la persona pertenece a la plantilla.
+- `false` en caso contrario.
+
+### Actividades
+
+Probar el método con varias personas:
+
+```java
+System.out.println(
+    desarrolladora.trabajaAqui(ana)
+);
+```
+
+### Cuestión
+
+¿Qué criterio utilizas para determinar que dos personas representan al mismo trabajador?
+
+---
+
+## Ejercicio 22. ¿Todos los autores siguen trabajando?
+
+Implementa en la clase `Videojuego` el método:
+
+```java
+public boolean autoresTrabajanEnDesarrolladora()
+```
+
+El método devolverá:
+
+- `true` si todos los autores pertenecen actualmente a la desarrolladora.
+- `false` si al menos uno no pertenece.
+
+### Ejemplo
+
+```java
+Persona ana = new Persona(1, "Ana");
+Persona luis = new Persona(2, "Luis");
+
+desarrolladora.contratar(ana);
+
+videojuego.agregarAutor(ana);
+videojuego.agregarAutor(luis);
+```
+
+Resultado:
+
+```text
+No todos los autores trabajan en la desarrolladora.
+```
+
+### Pista
+
+Será necesario recorrer:
+
+```java
+autores
+```
+
+y comprobar cada autor frente a:
+
+```java
+trabajadores
+```
+
+de la desarrolladora asociada.
+
+---
+
+## Ejercicio 23. Obtener autores externos
+
+Implementa en la clase `Videojuego` el método:
+
+```java
+public ArrayList<Persona> getAutoresExternos()
+```
+
+Este método devolverá todos los autores que actualmente no pertenecen a la desarrolladora.
+
+### Ejemplo
+
+```text
+Autores externos:
+
+- Luis
+- Marta
+```
+
+### Actividades
+
+1. Crear varios autores.
+2. Contratar algunos de ellos.
+3. Obtener y mostrar únicamente los autores externos.
+
+---
+
+## Ejercicio 24. Autor principal
+
+Consideraremos que el primer autor añadido es el autor principal del videojuego.
+
+Implementa:
+
+```java
+public Persona getAutorPrincipal()
+```
+
+### Ejemplo
+
+```text
+Autor principal: Ana
+```
+
+### Cuestión
+
+¿Qué debería devolver el método si el videojuego no tiene autores?
+
+---
+
+## Ejercicio 25. Estadísticas del proyecto
+
+Implementa los métodos:
+
+### En `Videojuego`
+
+```java
+public int getNumeroAutores()
+```
+
+### En `Desarrolladora`
+
+```java
+public int getNumeroTrabajadores()
+```
+
+### Actividades
+
+Mostrar información similar a:
+
+```text
+Minecraft
+Autores: 4
+
+Mojang Studios
+Trabajadores: 120
+```
+
+---
+
+# Proyecto Final Ampliado
+
+Amplía el proyecto final incorporando una nueva clase y nuevas relaciones entre objetos.
+
+## Clase Persona
+
+Atributos mínimos:
+
+- id
+- nombre
+
+### Requisitos
+
+- Constructor.
+- Getters y setters.
+- `toString()`.
+
+---
+
+## Clase Videojuego
+
+Añadir:
+
+```java
+private ArrayList<Persona> autores;
+```
+
+### Nuevos requisitos
+
+- Un videojuego puede tener varios autores.
+- Debe poder añadirse y eliminarse un autor.
+- Debe poder obtenerse el número de autores.
+- Debe poder determinarse si todos los autores siguen trabajando en la desarrolladora asociada.
+- Debe poder obtenerse la lista de autores externos.
+
+---
+
+## Clase Desarrolladora
+
+Añadir:
+
+```java
+private ArrayList<Persona> trabajadores;
+```
+
+### Nuevos requisitos
+
+- Una desarrolladora puede tener varios trabajadores.
+- Deben existir métodos para contratar y despedir empleados.
+- Debe poder comprobarse si una persona pertenece a la plantilla.
+- Debe poder obtenerse el número total de trabajadores.
+
+---
+
+## Nuevas comprobaciones obligatorias desde `main()`
+
+1. Crear al menos seis personas.
+2. Contratar varias personas en distintas desarrolladoras.
+3. Crear videojuegos con varios autores.
+4. Mostrar los autores de cada videojuego.
+5. Comprobar qué autores siguen trabajando en la desarrolladora.
+6. Mostrar los autores externos.
+7. Obtener el autor principal de varios videojuegos.
+8. Comprobar el comportamiento cuando alguna lista esté vacía.
+
+### Ejemplo de salida
+
+```text
+Videojuego: Minecraft
+
+Desarrolladora: Mojang Studios
+
+Autores:
+- Ana
+- Luis
+- Marta
+
+Autor principal:
+Ana
+
+¿Todos los autores trabajan en la desarrolladora?
+No
+
+Autores externos:
+- Luis
+```
