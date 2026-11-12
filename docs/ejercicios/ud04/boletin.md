@@ -784,6 +784,7 @@ Trabajadores: 120
 
 ---
 
+
 # Proyecto Final Ampliado
 
 Amplía el proyecto final incorporando una nueva clase y nuevas relaciones entre objetos.
